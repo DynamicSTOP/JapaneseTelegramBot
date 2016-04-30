@@ -1,0 +1,7 @@
+.idea
+*.class
+*.jar
+*.iml
+
+bot.key
+dialogs.cache
