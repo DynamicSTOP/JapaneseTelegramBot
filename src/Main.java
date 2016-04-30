@@ -2,7 +2,6 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,27 +13,34 @@ public class Main {
 
         IStorage storage = new MemoryStorage();
         TelegramBot bot = null;
+        BotStatus botStatus = null;
         try {
-            bot = StartUpLoader.makeTelegramBot();
-        } catch (IOException e) {
+            bot = StartUpLoader.createTelegramBot();
+            botStatus = StartUpLoader.loadBotStatus();
+            System.out.println("last update id was -> " + botStatus.getLastUpdateId());
+        } catch (Exception e) {
             System.out.println("ERROR: can't create telegram bot -> " + e.getMessage());
             return;
         }
 
-
         String hiraganaCharacters = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわを";
 
-        GetUpdatesResponse updatesResponse = bot.getUpdates(0, 0, 5000);
+        GetUpdatesResponse updatesResponse = bot.getUpdates(botStatus.getLastUpdateId()+1, 0, 60);
         List<Update> updates = updatesResponse.updates();
         for (int i = 0; i < updates.size(); i++) {
-            System.out.println(updates.get(i).message().chat() + "  \"" + updates.get(i).message().text() + "\"");
+            botStatus.setLastUpdateId(updates.get(i).updateId());
+            System.out.println(updates.get(i));
             try {
                 storage.get(updates.get(i).message().chat().id());
             } catch (EmptyStringException e) {
-                if (updates.get(i).message().text() == "/start") {
-
+                if (updates.get(i).message().text().equals("/start")) {
+                    System.out.println("CHAT:"
+                            + updates.get(i).message().chat().id()
+                            + ":" + updates.get(i).message().from().username()
+                            + ": sending hello message");
+                    bot.sendMessage(updates.get(i).message().chat().id(),"Hallo Hallo!\nBot is still in development. hehe.");
                 } else {
-                    System.out.println("ERROR: expected \"/start\", got\"" + e.getMessage() + "\" from user " + updates.get(i).message());
+                    System.out.println("ERROR: expected \"/start\", got \"" + updates.get(i).message().text() + "\" from user " + updates.get(i).message());
                 }
             } catch (Exception e) {
                 System.out.println("EXCEPTION: getting message from storage problem \"" + e.getMessage() + "\"");
@@ -43,5 +49,7 @@ public class Main {
         }
 
         storage.shutDown();
+        //TOneverDO remove it from here
+        StartUpLoader.saveBotStatus(botStatus);
     }
 }

@@ -37,6 +37,8 @@ public class MemoryStorage implements IStorage {
             ObjectInputStream oin = new ObjectInputStream(fis);
             storage = (HashMap<Long, String>) oin.readObject();
             System.out.println("loaded " + storage.size() + " dialogs");
+        } catch (FileNotFoundException e){
+            System.out.println("Dialogs storage is empty");
         } catch (Exception e) {
             System.out.println("EXCEPTION: startup problem " + e.getMessage());
         }
@@ -51,7 +53,7 @@ public class MemoryStorage implements IStorage {
             oos.flush();
             oos.close();
         } catch (Exception e) {
-            System.out.println("EXCEPTION: shutdown problem" + e.getMessage());
+            System.out.println("EXCEPTION: shutdown problem " + e.getMessage());
 
         }
     }

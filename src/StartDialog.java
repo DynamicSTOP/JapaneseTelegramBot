@@ -5,17 +5,17 @@ public class StartDialog implements IDialog {
     private Long chatId;
 
     @Override
-    public Integer getState() {
-        return null;
-    }
-
-    @Override
-    public Integer setState() {
-        return null;
-    }
-
-    @Override
     public Long getChatId() {
+        return chatId;
+    }
+
+    @Override
+    public void setChatId(Long chatId) {
+        this.chatId=chatId;
+    }
+
+    @Override
+    public IQuiz getCurrentQuiz() {
         return null;
     }
 }
