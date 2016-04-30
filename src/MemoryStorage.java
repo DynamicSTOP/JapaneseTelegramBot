@@ -6,7 +6,7 @@ import java.util.*;
  */
 public class MemoryStorage implements IStorage{
 
-    HashMap<Integer,String> storage = new HashMap<Integer,String>();
+    HashMap<Long,String> storage = new HashMap<>();
 
     public MemoryStorage(){
         start();
@@ -35,7 +35,7 @@ public class MemoryStorage implements IStorage{
         try {
             FileInputStream fis = new FileInputStream("dialogs.cache");
             ObjectInputStream oin = new ObjectInputStream(fis);
-            storage = (HashMap<Integer,String>) oin.readObject();
+            storage = (HashMap<Long,String>) oin.readObject();
             System.out.println("loaded " + storage.size() + " dialogs");
         } catch (Exception e){
             System.out.println("EXCEPTION: startup problem "+e.getMessage());
