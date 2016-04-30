@@ -6,8 +6,8 @@ import java.io.ObjectInputStream;
  * Created by leonid on 30.04.16.
  */
 public class DialogFactory {
-    public static IDialog makeDialog(String serializedDialog) throws IOException, ClassNotFoundException,EmptyStringException {
-        if(serializedDialog==null || serializedDialog.length()==0)
+    public static IDialog makeDialog(String serializedDialog) throws IOException, ClassNotFoundException, EmptyStringException {
+        if (serializedDialog == null || serializedDialog.length() == 0)
             throw new EmptyStringException();
         byte b[] = serializedDialog.getBytes();
         ByteArrayInputStream bi = new ByteArrayInputStream(b);

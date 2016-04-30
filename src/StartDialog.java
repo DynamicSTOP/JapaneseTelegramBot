@@ -3,6 +3,7 @@
  */
 public class StartDialog implements IDialog {
     private Long chatId;
+
     @Override
     public Integer getState() {
         return null;
