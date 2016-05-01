@@ -1,3 +1,6 @@
+import com.pengrad.telegrambot.model.request.Keyboard;
+import com.pengrad.telegrambot.model.request.ParseMode;
+
 import java.io.Serializable;
 
 /**
@@ -6,5 +9,36 @@ import java.io.Serializable;
 public interface IDialog extends Serializable {
     Long getChatId();
     void setChatId(Long chatId);
-    IQuiz getCurrentQuiz();
+
+    boolean hasKeyboard();
+
+    /**
+     *
+     * @return
+     */
+    String getAnswer();
+
+    /**
+     * ParseMode.Markdown prefered
+     * @return
+     */
+    ParseMode getParseMode();
+
+    /**
+     * should be false if there is no links inside
+     * @return
+     */
+    Boolean getDisableWebPagePreview();
+
+    /**
+     * can leave it to null
+     * @return
+     */
+    Integer getReplyToMessageId();
+
+    /**
+     * can be null
+     * @return
+     */
+    Keyboard getKeyboard();
 }

@@ -29,7 +29,7 @@ public class RedisStorage implements IStorage {
     }
 
     @Override
-    public BotStatus getBotStatus() throws Exception {
+    public BotStatus getBotStatus() throws EmptyStringException {
         BotStatus botStatus = (BotStatus) getObject("BOTSTATUS");
         if(botStatus == null)
             botStatus = new BotStatus();
@@ -65,7 +65,7 @@ public class RedisStorage implements IStorage {
         }
     }
 
-    private Object getObject(String key) {
+    private Object getObject(String key) throws EmptyStringException {
         try {
             byte b[] = get(key).getBytes();
             ByteArrayInputStream bi = new ByteArrayInputStream(b);
@@ -73,8 +73,8 @@ public class RedisStorage implements IStorage {
             return si.readObject();
         } catch (Exception e) {
             System.out.println("EXCEPTION: getting \"" + key + "\" from redis problem -> " + e.getClass() + ":" + e.getMessage());
+            throw new EmptyStringException();
         }
-        return null;
     }
 
 

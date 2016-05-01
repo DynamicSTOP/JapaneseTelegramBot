@@ -2,6 +2,8 @@
  * Created by Leonid on 01.05.2016.
  */
 public class HiraganaQuiz implements IQuiz {
+    String hiraganaCharacters = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわを";
+
     @Override
     public String createQuestion() {
         return null;

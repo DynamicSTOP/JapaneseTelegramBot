@@ -9,14 +9,13 @@ public interface IStorage {
      */
     IDialog getDialog(Long chatId) throws Exception;
 
-    void setDialog(IDialog dialog) throws Exception;
+    void setDialog(IDialog dialog);
 
     String get(String key) throws Exception;
 
     void set(String key,String data) throws Exception;
 
-
-    BotStatus getBotStatus() throws Exception;
+    BotStatus getBotStatus() throws EmptyStringException;
 
     void setBotStatus(BotStatus status) throws Exception;
 
