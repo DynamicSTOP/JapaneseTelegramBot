@@ -15,6 +15,7 @@ public class DialogManager {
         IDialog dialog = null;
         try {
             dialog = storage.getDialog(update.message().chat().id());
+
         } catch (EmptyStringException e) {
             dialog = makeHelloDialog(update);
         } catch (Exception e) {

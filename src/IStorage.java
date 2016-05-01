@@ -34,4 +34,7 @@ public interface IStorage {
     void shutDown() throws Exception;
 
 
+    IQuiz getQuiz(String type, Integer id) throws EmptyStringException;
+
+    void setQuiz(String type, IQuiz quiz);
 }

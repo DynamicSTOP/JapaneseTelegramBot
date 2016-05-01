@@ -16,7 +16,7 @@ public interface IDialog extends Serializable {
      *
      * @return
      */
-    String getAnswer();
+    String getAnswer(String messageText);
 
     /**
      * ParseMode.Markdown prefered

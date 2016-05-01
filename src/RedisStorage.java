@@ -1,6 +1,7 @@
 import redis.clients.jedis.Jedis;
 
 import java.io.*;
+import java.util.Base64;
 
 /**
  * Created by Leonid on 01.05.2016.
@@ -9,8 +10,8 @@ public class RedisStorage implements IStorage {
     Jedis jedis;
 
     @Override
-    public IDialog getDialog(Long chatId) throws Exception {
-        return (IDialog) getObject("DIALOGS:" + jedis.get(chatId.toString()));
+    public IDialog getDialog(Long chatId) throws EmptyStringException {
+        return (IDialog) getObject("DIALOGS:" + chatId.toString());
     }
 
     @Override
@@ -59,7 +60,7 @@ public class RedisStorage implements IStorage {
             ObjectOutputStream so = new ObjectOutputStream(bo);
             so.writeObject(o);
             so.flush();
-            jedis.set(key, bo.toString());
+            jedis.set(key, Base64.getEncoder().encodeToString(bo.toByteArray()));
         } catch (IOException e) {
             System.out.println("EXCEPTION: setting \"" + key + "\" into redis problem -> " + e.getMessage());
         }
@@ -67,7 +68,7 @@ public class RedisStorage implements IStorage {
 
     private Object getObject(String key) throws EmptyStringException {
         try {
-            byte b[] = get(key).getBytes();
+            byte b[] = Base64.getDecoder().decode(get(key));
             ByteArrayInputStream bi = new ByteArrayInputStream(b);
             ObjectInputStream si = new ObjectInputStream(bi);
             return si.readObject();
@@ -77,5 +78,13 @@ public class RedisStorage implements IStorage {
         }
     }
 
+    @Override
+    public IQuiz getQuiz(String type, Integer id) throws EmptyStringException {
+        return (IQuiz) getObject("QUIZ:"+type.toUpperCase()+":" + id.toString());
+    }
 
+    @Override
+    public void setQuiz(String type, IQuiz quiz) {
+        setObject("QUIZ:" + type.toUpperCase()+":", quiz);
+    }
 }

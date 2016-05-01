@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hiraganaQuizes>
+    <hiraganaQuiz id="0">
+        <correct>あ</correct>
+        <looksSimilar>おわぬめ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="1">
+        <correct>い</correct>
+        <looksSimilar>けり</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="2">
+        <correct>う</correct>
+        <looksSimilar>つて</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="3">
+        <correct>え</correct>
+        <looksSimilar>そん</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="4">
+        <correct>お</correct>
+        <looksSimilar>あねわぬめ</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ka -->
+    <hiraganaQuiz id="5">
+        <correct>か</correct>
+        <looksSimilar>おむ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="6">
+        <correct>き</correct>
+        <looksSimilar>さち</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="7">
+        <correct>く</correct>
+        <looksSimilar>へてふ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="8">
+        <correct>け</correct>
+        <looksSimilar>いせにりい</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="9">
+        <correct>こ</correct>
+        <looksSimilar>た</looksSimilar>
+    </hiraganaQuiz>
+    <!-- sa -->
+    <hiraganaQuiz id="10">
+        <correct>さ</correct>
+        <looksSimilar>ちき</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="11">
+        <correct>し</correct>
+        <looksSimilar>いひ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="12">
+        <correct>す</correct>
+        <looksSimilar>なまは</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="13">
+        <correct>せ</correct>
+        <looksSimilar>しすいも</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="14">
+        <correct>そ</correct>
+        <looksSimilar>てろと</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ta -->
+    <hiraganaQuiz id="15">
+        <correct>た</correct>
+        <looksSimilar>にこな</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="16">
+        <correct>ち</correct>
+        <looksSimilar>きさ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="17">
+        <correct>つ</correct>
+        <looksSimilar>うひちて</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="18">
+        <correct>て</correct>
+        <looksSimilar>とそ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="19">
+        <correct>と</correct>
+        <looksSimilar>そてさし</looksSimilar>
+    </hiraganaQuiz>
+    <!-- na -->
+    <hiraganaQuiz id="20">
+        <correct>な</correct>
+        <looksSimilar>はたけ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="21">
+        <correct>に</correct>
+        <looksSimilar>こた</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="22">
+        <correct>ぬ</correct>
+        <looksSimilar>おわめあ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="23">
+        <correct>ね</correct>
+        <looksSimilar>おめね</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="24">
+        <correct>の</correct>
+        <looksSimilar>めぬ</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ha -->
+    <hiraganaQuiz id="25">
+        <correct>は</correct>
+        <looksSimilar>ほけま</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="26">
+        <correct>ひ</correct>
+        <looksSimilar>のつ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="27">
+        <correct>ふ</correct>
+        <looksSimilar>くへ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="28">
+        <correct>へ</correct>
+        <looksSimilar>くふ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="29">
+        <correct>ほ</correct>
+        <looksSimilar>はけまは</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ma -->
+    <hiraganaQuiz id="30">
+        <correct>ま</correct>
+        <looksSimilar>はほなも</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="31">
+        <correct>み</correct>
+        <looksSimilar>よは</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="32">
+        <correct>む</correct>
+        <looksSimilar>もお</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="33">
+        <correct>め</correct>
+        <looksSimilar>おわぬあ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="34">
+        <correct>も</correct>
+        <looksSimilar>むきし</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ya -->
+    <hiraganaQuiz id="35">
+        <correct>や</correct>
+        <looksSimilar>かわ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="36">
+        <correct>ゆ</correct>
+        <looksSimilar>われの</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="37">
+        <correct>よ</correct>
+        <looksSimilar>はま</looksSimilar>
+    </hiraganaQuiz>
+    <!-- ra -->
+    <hiraganaQuiz id="38">
+        <correct>ら</correct>
+        <looksSimilar>ちつとろ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="39">
+        <correct>り</correct>
+        <looksSimilar>いけ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="40">
+        <correct>る</correct>
+        <looksSimilar>ろそち</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="41">
+        <correct>れ</correct>
+        <looksSimilar>わかゆ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="42">
+        <correct>ろ</correct>
+        <looksSimilar>るそち</looksSimilar>
+    </hiraganaQuiz>
+    <!-- wa -->
+    <hiraganaQuiz id="43">
+        <correct>わ</correct>
+        <looksSimilar>かゆれ</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="44">
+        <correct>を</correct>
+        <looksSimilar>ちるなと</looksSimilar>
+    </hiraganaQuiz>
+    <hiraganaQuiz id="45">
+        <correct>ん</correct>
+        <looksSimilar>えそ</looksSimilar>
+    </hiraganaQuiz>
+</hiraganaQuizes>

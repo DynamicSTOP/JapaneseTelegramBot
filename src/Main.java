@@ -1,6 +1,5 @@
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import retrofit.RetrofitError;
 
@@ -15,6 +14,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         IStorage storage = new RedisStorage();
+        StartUpLoader startUpLoader = new StartUpLoader(storage);
         TelegramBot bot = null;
         BotStatus botStatus = null;
 
@@ -27,7 +27,7 @@ public class Main {
         }
 
         try {
-            bot = StartUpLoader.createTelegramBot();
+            bot = startUpLoader.createTelegramBot();
             System.out.println("Telegram Bot created.");
             storage.start();
             System.out.println("Storage initialized.");
@@ -37,6 +37,9 @@ public class Main {
         }
 
         DialogManager dialogManager = new DialogManager(storage);
+        startUpLoader.checkQuizes();
+
+
 
         while (true) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +54,7 @@ public class Main {
                     IDialog dialog = dialogManager.processDialogUpdate(updates.get(i));
                     bot.sendMessage(
                             dialog.getChatId(),
-                            dialog.getAnswer(),
+                            dialog.getAnswer(updates.get(i).message().text()),
                             dialog.getParseMode(),
                             dialog.getDisableWebPagePreview(),
                             dialog.getReplyToMessageId(),
