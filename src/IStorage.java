@@ -7,23 +7,32 @@ public interface IStorage {
      * @return
      * @throws Exception
      */
-    IDialog get(Long chatId) throws Exception;
+    IDialog getDialog(Long chatId) throws Exception;
 
-    void set(IDialog dialog);
+    void setDialog(IDialog dialog) throws Exception;
+
+    String get(String key) throws Exception;
+
+    void set(String key,String data) throws Exception;
+
+
+    BotStatus getBotStatus() throws Exception;
+
+    void setBotStatus(BotStatus status) throws Exception;
 
     /**
      * loads data from file to memory cache or establish connection to database
      *
      * @return
      */
-    void start();
+    void start() throws Exception;
 
     /**
      * saves data from cache to file or closes connection to database
      *
      * @return
      */
-    void shutDown();
+    void shutDown() throws Exception;
 
 
 }
