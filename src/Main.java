@@ -1,3 +1,8 @@
+import com.japanese_bot.BotStatus;
+import com.japanese_bot.Exceptions.*;
+import com.japanese_bot.StartUpLoader;
+import com.japanese_bot.dialogs.*;
+import com.japanese_bot.storages.*;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
@@ -19,14 +24,6 @@ public class Main {
         BotStatus botStatus = null;
 
         try {
-            botStatus = storage.getBotStatus();
-            System.out.println("Bot Status loaded. last update id is " + botStatus.getLastUpdateId());
-        } catch (EmptyStringException e) {
-            botStatus = new BotStatus();
-            System.out.println("Bot Status generated.");
-        }
-
-        try {
             bot = startUpLoader.createTelegramBot();
             System.out.println("Telegram Bot created.");
             storage.start();
@@ -36,10 +33,17 @@ public class Main {
             return;
         }
 
+        try {
+            botStatus = storage.getBotStatus();
+            System.out.println("Bot Status loaded. last update id is " + botStatus.getLastUpdateId());
+        } catch (EmptyStringException e) {
+            botStatus = new BotStatus();
+            System.out.println("Bot Status generated.");
+        }
+
+
         DialogManager dialogManager = new DialogManager(storage);
         startUpLoader.checkQuizes();
-
-
 
         while (true) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +55,7 @@ public class Main {
                 List<Update> updates = updatesResponse.updates();
                 for (int i = 0; i < updates.size(); i++) {
                     botStatus.setLastUpdateId(updates.get(i).updateId());
-                    IDialog dialog = dialogManager.processDialogUpdate(updates.get(i));
+                    Dialog dialog = dialogManager.processDialogUpdate(updates.get(i));
                     bot.sendMessage(
                             dialog.getChatId(),
                             dialog.getAnswer(updates.get(i).message().text()),
@@ -60,6 +64,7 @@ public class Main {
                             dialog.getReplyToMessageId(),
                             dialog.getKeyboard());
                     storage.setDialog(dialog);
+                    storage.setBotStatus(botStatus);
                 }
             } catch (RetrofitError e) {
                 System.out.println("EXCEPTION: getting updates exception \"" + e.getClass() + "\" \"" + e.getMessage() + "\"");
@@ -72,7 +77,6 @@ public class Main {
         } catch (Exception e) {
             System.out.println("ERROR: shutdown problem " + e.getMessage());
         }
-
 
     }
 }

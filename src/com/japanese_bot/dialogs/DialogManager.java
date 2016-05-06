@@ -1,3 +1,7 @@
+package com.japanese_bot.dialogs;
+
+import com.japanese_bot.Exceptions.EmptyStringException;
+import com.japanese_bot.storages.IStorage;
 import com.pengrad.telegrambot.model.Update;
 
 /**
@@ -11,8 +15,8 @@ public class DialogManager {
         this.storage=storage;
     }
 
-    public IDialog processDialogUpdate(Update update){
-        IDialog dialog = null;
+    public Dialog processDialogUpdate(Update update){
+        Dialog dialog = null;
         try {
             dialog = storage.getDialog(update.message().chat().id());
 
@@ -25,10 +29,12 @@ public class DialogManager {
         return dialog;
     }
 
-    private IDialog makeHelloDialog(Update update){
+    private Dialog makeHelloDialog(Update update){
         if (!update.message().text().equals("/start")) {
             System.out.println("ERROR: expected \"/start\", got \"" + update.message().text() + "\" from user " + update.message());
         }
-        return new StartDialog(update.message().chat().id());
+        Dialog helloDialog = new StartDialog();
+        helloDialog.setChatId(update.message().chat().id());
+        return helloDialog;
     }
 }

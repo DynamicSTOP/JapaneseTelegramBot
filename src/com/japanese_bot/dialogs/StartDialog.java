@@ -1,19 +1,42 @@
+package com.japanese_bot.dialogs;
+
 import com.pengrad.telegrambot.model.request.Keyboard;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by leonid on 30.04.16.
  */
-public class StartDialog implements IDialog {
+public class StartDialog extends Dialog {
     private Long chatId;
-    private boolean hasKeyboard = false;
+
+
+    private boolean keyboardAvailable = false;
     private enum KeyboardType{STANDARD}
+
     private KeyboardType keyboardType;
 
-    public StartDialog(Long chatId) {
-        setChatId(chatId);
-        keyboardType= KeyboardType.STANDARD;
+    public KeyboardType getKeyboardType() {
+        return keyboardType;
+    }
+
+    public void setKeyboardAvailable(boolean keyboardAvailable) {
+        this.keyboardAvailable = keyboardAvailable;
+    }
+
+    public void setKeyboardType(KeyboardType keyboardType) {
+        this.keyboardType = keyboardType;
+    }
+
+    public StartDialog(Map<String,String> values){
+        super(values);
+    }
+
+    public StartDialog() {
+        keyboardType = KeyboardType.STANDARD;
     }
 
     @Override
@@ -27,8 +50,8 @@ public class StartDialog implements IDialog {
     }
 
     @Override
-    public boolean hasKeyboard() {
-        return hasKeyboard;
+    public boolean getKeyboardAvailable() {
+        return keyboardAvailable;
     }
 
     private String getDefaultAnswer(){
@@ -103,4 +126,21 @@ public class StartDialog implements IDialog {
                 "</code>";
     }
 
+
+    @Override
+    public Map<String, String> getParamsList() {
+        Map<String,String> values = new HashMap<>();
+        values.put("dialogType",getClass().getCanonicalName());
+        values.put("chatId",String.valueOf(getChatId()));
+        values.put("keyboardAvailable",String.valueOf(getKeyboardAvailable()));
+        values.put("keyboardType",String.valueOf(getKeyboardType()));
+        return values;
+    }
+
+    @Override
+    public void setValues(Map<String, String> values) {
+        setChatId(Long.valueOf(values.get("chatId")));
+        setKeyboardAvailable(Boolean.valueOf(values.get("keyboardAvailable")));
+        setKeyboardType(KeyboardType.valueOf(values.get("keyboardType")));
+    }
 }

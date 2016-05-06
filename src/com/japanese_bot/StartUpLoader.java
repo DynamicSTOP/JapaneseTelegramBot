@@ -1,9 +1,13 @@
+package com.japanese_bot;
+
+import com.japanese_bot.quizes.Quiz;
+import com.japanese_bot.quizes.QuizManager;
+import com.japanese_bot.storages.IStorage;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.TelegramBotAdapter;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by leonid on 30.04.16.
@@ -29,7 +33,7 @@ public class StartUpLoader {
         try {
             System.out.println("Hiragana quiz count = "+storage.get("QUIZ:HIRAGANA:COUNT"));
         } catch (Exception e) {
-            ArrayList<IQuiz> quizes = manager.generateHiraganaQuizes();
+            ArrayList<Quiz> quizes = manager.generateHiraganaQuizes();
             for (int i = 0; i < quizes.size() ; i++) {
 
             }

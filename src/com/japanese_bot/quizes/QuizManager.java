@@ -1,3 +1,5 @@
+package com.japanese_bot.quizes;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -11,8 +13,8 @@ import java.util.ArrayList;
  */
 public class QuizManager {
 
-    public ArrayList<IQuiz> generateHiraganaQuizes(){
-        ArrayList<IQuiz> quizes = new ArrayList<>();
+    public ArrayList<Quiz> generateHiraganaQuizes(){
+        ArrayList<Quiz> quizes = new ArrayList<>();
         try {
             File inputFile = new File("HiraganaQuizes.xml");
             DocumentBuilderFactory dbFactory

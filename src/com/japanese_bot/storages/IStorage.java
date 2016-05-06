@@ -1,3 +1,10 @@
+package com.japanese_bot.storages;
+
+import com.japanese_bot.BotStatus;
+import com.japanese_bot.Exceptions.EmptyStringException;
+import com.japanese_bot.dialogs.Dialog;
+import com.japanese_bot.quizes.*;
+
 /**
  * Created by leonid on 30.04.16.
  */
@@ -7,9 +14,9 @@ public interface IStorage {
      * @return
      * @throws Exception
      */
-    IDialog getDialog(Long chatId) throws Exception;
+    Dialog getDialog(Long chatId) throws Exception;
 
-    void setDialog(IDialog dialog);
+    void setDialog(Dialog dialog);
 
     String get(String key) throws Exception;
 
@@ -17,7 +24,7 @@ public interface IStorage {
 
     BotStatus getBotStatus() throws EmptyStringException;
 
-    void setBotStatus(BotStatus status) throws Exception;
+    void setBotStatus(BotStatus status);
 
     /**
      * loads data from file to memory cache or establish connection to database
@@ -34,7 +41,7 @@ public interface IStorage {
     void shutDown() throws Exception;
 
 
-    IQuiz getQuiz(String type, Integer id) throws EmptyStringException;
+    public Quiz getQuiz(String type, Integer id) throws EmptyStringException;
 
-    void setQuiz(String type, IQuiz quiz);
+    public void setQuiz(String type, Quiz quiz);
 }

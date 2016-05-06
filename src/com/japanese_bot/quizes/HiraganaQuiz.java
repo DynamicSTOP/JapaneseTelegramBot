@@ -1,7 +1,11 @@
+package com.japanese_bot.quizes;
+
+import java.util.Map;
+
 /**
  * Created by Leonid on 01.05.2016.
  */
-public class HiraganaQuiz implements IQuiz {
+public class HiraganaQuiz extends Quiz {
     String hiraganaCharacters =
                     "あいうえお" +
                     "かきくけこ" +
@@ -37,4 +41,15 @@ public class HiraganaQuiz implements IQuiz {
     public Boolean checkTask(String userAnswer) {
         return null;
     }
+
+    @Override
+    public Map<String, String> getParamsList() {
+        return null;
+    }
+
+    @Override
+    public void setValues(Map<String, String> values) {
+
+    }
+
 }
