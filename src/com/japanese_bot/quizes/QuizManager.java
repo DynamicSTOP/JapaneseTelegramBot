@@ -16,7 +16,7 @@ public class QuizManager {
     public ArrayList<Quiz> generateHiraganaQuizes(){
         ArrayList<Quiz> quizes = new ArrayList<>();
         try {
-            File inputFile = new File("HiraganaQuizes.xml");
+            File inputFile = new File("KanaQuizes.xml");
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -27,11 +27,10 @@ public class QuizManager {
             for (int i = 0; i < nList.getLength(); i++) {
                 
             }
-
         } catch (Exception e){
             System.out.println("Generating Hiragan Quizes from xml fail -> "+ e.getMessage());
         }
 
-            return quizes;
+        return quizes;
     }
 }

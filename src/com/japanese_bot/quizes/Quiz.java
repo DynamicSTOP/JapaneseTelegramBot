@@ -2,6 +2,8 @@ package com.japanese_bot.quizes;
 
 import com.japanese_bot.storages.Storagable;
 
+import java.util.List;
+
 /**
  * Created by leonid on 29.04.16.
  */
@@ -13,13 +15,13 @@ public abstract class Quiz extends Storagable {
 
     abstract String getCorrectAnswer();
 
-    abstract String[] getWrongAnswers();
+    abstract List<String> getAnswers();
 
     /**
      * should be a uniq id
      * @return
      */
-    abstract String getKey();
+    abstract int getKey();
 
     /**
      * checks if userAnswer is equal to answer.
