@@ -36,7 +36,7 @@ public class RedisStorage implements IStorage {
     }
 
     @Override
-    public void set(String key, String data) throws Exception {
+    public void set(String key, String data) {
         jedis.set(key, data);
     }
 
@@ -63,7 +63,7 @@ public class RedisStorage implements IStorage {
         jedis.close();
     }
 
-    private void setObject(String key, Storagable o) {
+    private void setObject(String key, Storable o) {
         jedis.del(key);
         jedis.hmset(key,o.getParamsList());
     }
@@ -76,13 +76,17 @@ public class RedisStorage implements IStorage {
         return fields;
     }
 
+
     @Override
-    public Quiz getQuiz(String type, Integer id) throws EmptyStringException {
-        return (Quiz) getObjectData("QUIZ:"+type.toUpperCase()+":" + id.toString());
+    public Quiz getQuiz(String key) throws EmptyStringException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Map<String,String> objectData = getObjectData(key);
+        Class<?> quizClass = Class.forName(objectData.get("quizType"));
+        Constructor<?> quizClassConstructor = quizClass.getConstructor(Map.class);
+        return (Quiz) quizClassConstructor.newInstance(objectData);
     }
 
     @Override
-    public void setQuiz(String type, Quiz quiz) {
-        setObject("QUIZ:" + type.toUpperCase()+":", quiz);
+    public void setQuiz(Quiz quiz) {
+        setObject(quiz.getKey(), quiz);
     }
 }

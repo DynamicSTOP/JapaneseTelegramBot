@@ -1,27 +1,31 @@
 package com.japanese_bot.quizes;
 
-import com.japanese_bot.storages.Storagable;
+import com.japanese_bot.storages.Storable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by leonid on 29.04.16.
  */
-public abstract class Quiz extends Storagable {
+public abstract class Quiz extends Storable {
+    protected Quiz() {}
+    public Quiz(Map<String,String> values){super(values);}
+
     /**
      * @return string that would be sended to user later
      */
-    abstract String createQuestion();
+    public abstract String createQuestion();
 
-    abstract String getCorrectAnswer();
+    public abstract String getCorrectAnswer();
 
-    abstract List<String> getAnswers();
+    public abstract List<String> getAnswers();
 
     /**
-     * should be a uniq id
+     * should be a uniq key for db
      * @return
      */
-    abstract int getKey();
+    public abstract String getKey();
 
     /**
      * checks if userAnswer is equal to answer.
@@ -29,5 +33,5 @@ public abstract class Quiz extends Storagable {
      * @param userAnswer
      * @return true if user answered correctly
      */
-    abstract Boolean checkTask(String userAnswer);
+    public abstract Boolean checkTask(String userAnswer);
 }

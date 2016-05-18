@@ -20,7 +20,7 @@ public interface IStorage {
 
     String get(String key) throws Exception;
 
-    void set(String key,String data) throws Exception;
+    void set(String key,String data);
 
     BotStatus getBotStatus() throws EmptyStringException;
 
@@ -41,7 +41,7 @@ public interface IStorage {
     void shutDown() throws Exception;
 
 
-    public Quiz getQuiz(String type, Integer id) throws EmptyStringException;
+    Quiz getQuiz(String key) throws Exception;
 
-    public void setQuiz(String type, Quiz quiz);
+    void setQuiz(Quiz quiz);
 }

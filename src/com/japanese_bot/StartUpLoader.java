@@ -30,18 +30,29 @@ public class StartUpLoader {
     }
 
     private void checkHiraganaQuizes(QuizManager manager) {
+        int quizNumber=0;
         try {
-            System.out.println("Hiragana quiz count = "+storage.get("QUIZ:HIRAGANA:COUNT"));
-        } catch (Exception e) {
-            ArrayList<Quiz> quizes = manager.generateHiraganaQuizes();
-            for (int i = 0; i < quizes.size() ; i++) {
+            quizNumber=Integer.valueOf(storage.get("QUIZ:HIRAGANA:COUNT"));
+        } catch (Exception e) {}
 
+        ArrayList<Quiz> quizes;
+        if(quizNumber==0){
+            quizes = manager.generateHiraganaQuizes();
+            for (int i = 0; i < quizes.size() ; i++) {
+                storage.setQuiz(quizes.get(i));
             }
-            try {
-                storage.set("QUIZ:HIRAGANA:COUNT",String.valueOf(quizes.size()));
-            } catch (Exception e1) {
-                e1.printStackTrace();
+            storage.set("QUIZ:HIRAGANA:COUNT",String.valueOf(quizes.size()));
+        } else {
+            quizes = new ArrayList<>();
+            for (int i = 0; i < quizNumber; i++) {
+                try{
+                    quizes.add(storage.getQuiz("QUIZ:HIRAGANA:"+String.valueOf(i)));
+                } catch (Exception e){
+                    System.out.println("EXCEPTION: getting hiragana quiz from storage problem \"" + e.getMessage() + "\"");
+                }
             }
         }
+
+        System.out.println("Hiragana quiz count = " + quizes.size());
     }
 }

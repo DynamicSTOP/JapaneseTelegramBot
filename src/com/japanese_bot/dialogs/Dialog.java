@@ -1,6 +1,6 @@
 package com.japanese_bot.dialogs;
 
-import com.japanese_bot.storages.Storagable;
+import com.japanese_bot.storages.Storable;
 import com.pengrad.telegrambot.model.request.Keyboard;
 import com.pengrad.telegrambot.model.request.ParseMode;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by leonid on 29.04.16.
  */
-public abstract class Dialog extends Storagable {
+public abstract class Dialog extends Storable {
     public Dialog(){}
     public Dialog(Map<String,String> values){super(values);}
 

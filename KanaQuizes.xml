@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <kanaQuizes>
-    <quiz id="0">
+    <quiz hiragana-id="0">
         <hiragana>あ</hiragana>
         <hiraganaSimilar>おわぬめ</hiraganaSimilar>
         <romaji>a</romaji>
         <katakana>ア</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="1">
+    <quiz hiragana-id="1">
         <hiragana>い</hiragana>
         <hiraganaSimilar>けり</hiraganaSimilar>
         <romaji>i</romaji>
         <katakana>イ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="2">
+    <quiz hiragana-id="2">
         <hiragana>う</hiragana>
         <hiraganaSimilar>つて</hiraganaSimilar>
         <romaji>u</romaji>
         <katakana>ウ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="3">
+    <quiz hiragana-id="3">
         <hiragana>え</hiragana>
         <hiraganaSimilar>そん</hiraganaSimilar>
         <romaji>e</romaji>
         <katakana>エ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="4">
+    <quiz hiragana-id="4">
         <hiragana>お</hiragana>
         <hiraganaSimilar>あねわぬめ</hiraganaSimilar>
         <romaji>o</romaji>
@@ -36,35 +36,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ka -->
-    <quiz id="5">
+    <quiz hiragana-id="5">
         <hiragana>か</hiragana>
         <hiraganaSimilar>おむ</hiraganaSimilar>
         <romaji>ka</romaji>
         <katakana>カ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="6">
+    <quiz hiragana-id="6">
         <hiragana>き</hiragana>
         <hiraganaSimilar>さち</hiraganaSimilar>
         <romaji>ki</romaji>
         <katakana>キ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="7">
+    <quiz hiragana-id="7">
         <hiragana>く</hiragana>
         <hiraganaSimilar>へてふ</hiraganaSimilar>
         <romaji>ku</romaji>
         <katakana>ク</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="8">
+    <quiz hiragana-id="8">
         <hiragana>け</hiragana>
         <hiraganaSimilar>いせにりい</hiraganaSimilar>
         <romaji>ke</romaji>
         <katakana>ケ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="9">
+    <quiz hiragana-id="9">
         <hiragana>こ</hiragana>
         <hiraganaSimilar>た</hiraganaSimilar>
         <romaji>ko</romaji>
@@ -72,35 +72,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- sa -->
-    <quiz id="10">
+    <quiz hiragana-id="10">
         <hiragana>さ</hiragana>
         <hiraganaSimilar>ちき</hiraganaSimilar>
         <romaji>sa</romaji>
         <katakana>サ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="11">
+    <quiz hiragana-id="11">
         <hiragana>し</hiragana>
         <hiraganaSimilar>いひ</hiraganaSimilar>
         <romaji>shi</romaji>
         <katakana>シ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="12">
+    <quiz hiragana-id="12">
         <hiragana>す</hiragana>
         <hiraganaSimilar>なまは</hiraganaSimilar>
         <romaji>su</romaji>
         <katakana>ス</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="13">
+    <quiz hiragana-id="13">
         <hiragana>せ</hiragana>
         <hiraganaSimilar>しすいも</hiraganaSimilar>
         <romaji>se</romaji>
         <katakana>セ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="14">
+    <quiz hiragana-id="14">
         <hiragana>そ</hiragana>
         <hiraganaSimilar>てろと</hiraganaSimilar>
         <romaji>so</romaji>
@@ -108,35 +108,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ta -->
-    <quiz id="15">
+    <quiz hiragana-id="15">
         <hiragana>た</hiragana>
         <hiraganaSimilar>にこな</hiraganaSimilar>
         <romaji>ta</romaji>
         <katakana>タ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="16">
+    <quiz hiragana-id="16">
         <hiragana>ち</hiragana>
         <hiraganaSimilar>きさ</hiraganaSimilar>
         <romaji>chi</romaji>
         <katakana>チ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="17">
+    <quiz hiragana-id="17">
         <hiragana>つ</hiragana>
         <hiraganaSimilar>うひちて</hiraganaSimilar>
         <romaji>tsu</romaji>
         <katakana>ツ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="18">
+    <quiz hiragana-id="18">
         <hiragana>て</hiragana>
         <hiraganaSimilar>とそ</hiraganaSimilar>
         <romaji>te</romaji>
         <katakana>テ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="19">
+    <quiz hiragana-id="19">
         <hiragana>と</hiragana>
         <hiraganaSimilar>そてさし</hiraganaSimilar>
         <romaji>to</romaji>
@@ -144,35 +144,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- na -->
-    <quiz id="20">
+    <quiz hiragana-id="20">
         <hiragana>な</hiragana>
         <hiraganaSimilar>はたけ</hiraganaSimilar>
         <romaji>na</romaji>
         <katakana>ナ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="21">
+    <quiz hiragana-id="21">
         <hiragana>に</hiragana>
         <hiraganaSimilar>こた</hiraganaSimilar>
         <romaji>ni</romaji>
         <katakana>ニ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="22">
+    <quiz hiragana-id="22">
         <hiragana>ぬ</hiragana>
         <hiraganaSimilar>おわめあ</hiraganaSimilar>
         <romaji>nu</romaji>
         <katakana>ヌ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="23">
+    <quiz hiragana-id="23">
         <hiragana>ね</hiragana>
         <hiraganaSimilar>おめね</hiraganaSimilar>
         <romaji>ne</romaji>
         <katakana>ネ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="24">
+    <quiz hiragana-id="24">
         <hiragana>の</hiragana>
         <hiraganaSimilar>めぬ</hiraganaSimilar>
         <romaji>no</romaji>
@@ -180,35 +180,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ha -->
-    <quiz id="25">
+    <quiz hiragana-id="25">
         <hiragana>は</hiragana>
         <hiraganaSimilar>ほけま</hiraganaSimilar>
         <romaji>ha</romaji>
         <katakana>ハ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="26">
+    <quiz hiragana-id="26">
         <hiragana>ひ</hiragana>
         <hiraganaSimilar>のつ</hiraganaSimilar>
         <romaji>hi</romaji>
         <katakana>ヒ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="27">
+    <quiz hiragana-id="27">
         <hiragana>ふ</hiragana>
         <hiraganaSimilar>くへ</hiraganaSimilar>
         <romaji>fu</romaji>
         <katakana>フ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="28">
+    <quiz hiragana-id="28">
         <hiragana>へ</hiragana>
         <hiraganaSimilar>くふ</hiraganaSimilar>
         <romaji>he</romaji>
         <katakana>ヘ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="29">
+    <quiz hiragana-id="29">
         <hiragana>ほ</hiragana>
         <hiraganaSimilar>はけまは</hiraganaSimilar>
         <romaji>ho</romaji>
@@ -216,35 +216,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ma -->
-    <quiz id="30">
+    <quiz hiragana-id="30">
         <hiragana>ま</hiragana>
         <hiraganaSimilar>はほなも</hiraganaSimilar>
         <romaji>ma</romaji>
         <katakana>マ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="31">
+    <quiz hiragana-id="31">
         <hiragana>み</hiragana>
         <hiraganaSimilar>よは</hiraganaSimilar>
         <romaji>mi</romaji>
         <katakana>ミ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="32">
+    <quiz hiragana-id="32">
         <hiragana>む</hiragana>
         <hiraganaSimilar>もお</hiraganaSimilar>
         <romaji>mu</romaji>
         <katakana>ム</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="33">
+    <quiz hiragana-id="33">
         <hiragana>め</hiragana>
         <hiraganaSimilar>おわぬあ</hiraganaSimilar>
         <romaji>me</romaji>
         <katakana>メ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="34">
+    <quiz hiragana-id="34">
         <hiragana>も</hiragana>
         <hiraganaSimilar>むきし</hiraganaSimilar>
         <romaji>mo</romaji>
@@ -252,21 +252,21 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ya -->
-    <quiz id="35">
+    <quiz hiragana-id="35">
         <hiragana>や</hiragana>
         <hiraganaSimilar>かわ</hiraganaSimilar>
         <romaji>ya</romaji>
         <katakana>ヤ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="36">
+    <quiz hiragana-id="36">
         <hiragana>ゆ</hiragana>
         <hiraganaSimilar>われの</hiraganaSimilar>
         <romaji>yu</romaji>
         <katakana>ユ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="37">
+    <quiz hiragana-id="37">
         <hiragana>よ</hiragana>
         <hiraganaSimilar>はま</hiraganaSimilar>
         <romaji>yo</romaji>
@@ -274,35 +274,35 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- ra -->
-    <quiz id="38">
+    <quiz hiragana-id="38">
         <hiragana>ら</hiragana>
         <hiraganaSimilar>ちつとろ</hiraganaSimilar>
         <romaji>ra</romaji>
         <katakana>ラ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="39">
+    <quiz hiragana-id="39">
         <hiragana>り</hiragana>
         <hiraganaSimilar>いけ</hiraganaSimilar>
         <romaji>ri</romaji>
         <katakana>リ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="40">
+    <quiz hiragana-id="40">
         <hiragana>る</hiragana>
         <hiraganaSimilar>ろそち</hiraganaSimilar>
         <romaji>ru</romaji>
         <katakana>ル</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="41">
+    <quiz hiragana-id="41">
         <hiragana>れ</hiragana>
         <hiraganaSimilar>わかゆ</hiraganaSimilar>
         <romaji>re</romaji>
         <katakana>レ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="42">
+    <quiz hiragana-id="42">
         <hiragana>ろ</hiragana>
         <hiraganaSimilar>るそち</hiraganaSimilar>
         <romaji>ro</romaji>
@@ -310,21 +310,21 @@
         <katakanaSimilar></katakanaSimilar>
     </quiz>
     <!-- wa -->
-    <quiz id="43">
+    <quiz hiragana-id="43">
         <hiragana>わ</hiragana>
         <hiraganaSimilar>かゆれ</hiraganaSimilar>
         <romaji>wa</romaji>
         <katakana>ワ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="44">
+    <quiz hiragana-id="44">
         <hiragana>を</hiragana>
         <hiraganaSimilar>ちるなと</hiraganaSimilar>
         <romaji>wo</romaji>
         <katakana>ヲ</katakana>
         <katakanaSimilar></katakanaSimilar>
     </quiz>
-    <quiz id="45">
+    <quiz hiragana-id="45">
         <hiragana>ん</hiragana>
         <hiraganaSimilar>えそ</hiraganaSimilar>
         <romaji>n</romaji>

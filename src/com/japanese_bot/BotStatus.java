@@ -1,6 +1,6 @@
 package com.japanese_bot;
 
-import com.japanese_bot.storages.Storagable;
+import com.japanese_bot.storages.Storable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by Leonid on 30.04.2016.
  */
-public class BotStatus extends Storagable {
+public class BotStatus extends Storable {
     private int lastUpdateId = -1;
     private int hiraganaQuizCount;
 

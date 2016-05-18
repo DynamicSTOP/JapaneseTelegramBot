@@ -47,13 +47,33 @@ public class KanaQuiz extends Quiz {
      */
     String[] questions={"Do you remember appropriate character for :reading: ?"};
 
-    int quizKey;
+    public void setQuizKey(String quizKey) {
+        this.quizKey = quizKey;
+    }
 
-    public KanaQuiz(int quizKey,String correctAnswer,String appropriateSyllable, String confusingCharacters){
+    public void setConfusingCharacters(String confusingCharacters) {
+        this.confusingCharacters = confusingCharacters;
+    }
+
+    public void setAppropriateSyllable(String appropriateSyllable) {
+        this.appropriateSyllable = appropriateSyllable;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    private String quizKey;
+
+    public KanaQuiz(String quizKey,String correctAnswer,String appropriateSyllable, String confusingCharacters){
         this.quizKey = quizKey;
         this.correctAnswer = correctAnswer;
         this.appropriateSyllable = appropriateSyllable;
         this.confusingCharacters = confusingCharacters;
+    }
+
+    public KanaQuiz(Map<String,String> values){
+        super(values);
     }
 
     @Override
@@ -106,7 +126,7 @@ public class KanaQuiz extends Quiz {
     }
 
     @Override
-    public int getKey() {
+    public String getKey() {
         return quizKey;
     }
 
@@ -117,12 +137,20 @@ public class KanaQuiz extends Quiz {
 
     @Override
     public Map<String, String> getParamsList() {
-        return null;
+        Map<String,String> values = new HashMap<>();
+        values.put("quizType",getClass().getCanonicalName());
+        values.put("key",getKey());
+        values.put("correctAnswer",correctAnswer);
+        values.put("appropriateSyllable",appropriateSyllable);
+        values.put("confusingCharacters",confusingCharacters);
+        return values;
     }
 
     @Override
     public void setValues(Map<String, String> values) {
-
+        setAppropriateSyllable(values.get("appropriateSyllable"));
+        setConfusingCharacters(values.get("confusingCharacters"));
+        setCorrectAnswer(values.get("correctAnswer"));
+        setQuizKey(values.get("key"));
     }
-
 }
