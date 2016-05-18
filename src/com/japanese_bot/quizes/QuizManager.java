@@ -8,15 +8,16 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Leonid on 01.05.2016.
  */
 public class QuizManager {
 
-    public ArrayList<Quiz> generateHiraganaQuizes(){
-        ArrayList<Quiz> quizes = new ArrayList<>();
+    public static HashMap<String,Quiz> HiraganaQuizzes;
+
+    public HashMap<String,Quiz> generateHiraganaQuizes(){
         try {
             File inputFile = new File("KanaQuizes.xml");
             DocumentBuilderFactory dbFactory
@@ -25,15 +26,17 @@ public class QuizManager {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
 
-            Node nKanaQuizes = doc.getElementsByTagName("kanaQuizes").item(0);
-            Element eKanaQuizes = (Element) nKanaQuizes;
-            NodeList quizNodes = eKanaQuizes.getElementsByTagName("quiz");
+            Node nKanaQuizzes = doc.getElementsByTagName("kanaQuizes").item(0);
+            Element eKanaQuizzes = (Element) nKanaQuizzes;
+            NodeList quizNodes = eKanaQuizzes.getElementsByTagName("quiz");
 
             for (int i = 0; i < quizNodes.getLength(); i++) {
                 Node node = quizNodes.item(i);
 
                 Element quiz = (Element) node;
-                quizes.add(new KanaQuiz(
+                HiraganaQuizzes.put(
+                        "QUIZ:HIRAGANA:"+quiz.getAttribute("hiragana-id"),
+                        new KanaQuiz(
                         "QUIZ:HIRAGANA:"+quiz.getAttribute("hiragana-id"),
                         quiz.getElementsByTagName("hiragana").item(0).getTextContent(),
                         quiz.getElementsByTagName("romaji").item(0).getTextContent(),
@@ -44,6 +47,10 @@ public class QuizManager {
             System.out.println("Generating Hiragan Quizes from xml fail -> "+ e.getMessage());
         }
 
-        return quizes;
+        return HiraganaQuizzes;
+    }
+
+    public static Quiz getHiraganaQuizByKey(String key){
+        return HiraganaQuizzes.get(key);
     }
 }

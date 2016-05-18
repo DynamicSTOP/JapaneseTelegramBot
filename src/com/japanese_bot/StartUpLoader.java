@@ -8,6 +8,7 @@ import com.pengrad.telegrambot.TelegramBotAdapter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by leonid on 30.04.16.
@@ -35,24 +36,24 @@ public class StartUpLoader {
             quizNumber=Integer.valueOf(storage.get("QUIZ:HIRAGANA:COUNT"));
         } catch (Exception e) {}
 
-        ArrayList<Quiz> quizes;
+        HashMap<String,Quiz> hiraganaQuizes;
         if(quizNumber==0){
-            quizes = manager.generateHiraganaQuizes();
-            for (int i = 0; i < quizes.size() ; i++) {
-                storage.setQuiz(quizes.get(i));
+            hiraganaQuizes = manager.generateHiraganaQuizes();
+            for(Quiz quiz : hiraganaQuizes.values()){
+                storage.setQuiz(quiz);
             }
-            storage.set("QUIZ:HIRAGANA:COUNT",String.valueOf(quizes.size()));
+            storage.set("QUIZ:HIRAGANA:COUNT",String.valueOf(hiraganaQuizes.size()));
         } else {
-            quizes = new ArrayList<>();
+            hiraganaQuizes = new HashMap<>();
             for (int i = 0; i < quizNumber; i++) {
                 try{
-                    quizes.add(storage.getQuiz("QUIZ:HIRAGANA:"+String.valueOf(i)));
+                    hiraganaQuizes.put("QUIZ:HIRAGANA:"+String.valueOf(i),storage.getQuiz("QUIZ:HIRAGANA:"+String.valueOf(i)));
                 } catch (Exception e){
                     System.out.println("EXCEPTION: getting hiragana quiz from storage problem \"" + e.getMessage() + "\"");
                 }
             }
         }
 
-        System.out.println("Hiragana quiz count = " + quizes.size());
+        System.out.println("Hiragana quiz count = " + hiraganaQuizes.size());
     }
 }

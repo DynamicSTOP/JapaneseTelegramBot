@@ -11,48 +11,16 @@ import java.util.Map;
  * Created by leonid on 30.04.16.
  */
 public class StartDialog extends Dialog {
-    private Long chatId;
-
-
-    private boolean keyboardAvailable = false;
-    private enum KeyboardType{STANDARD}
-
-    private KeyboardType keyboardType;
-
-    public KeyboardType getKeyboardType() {
-        return keyboardType;
-    }
-
-    public void setKeyboardAvailable(boolean keyboardAvailable) {
-        this.keyboardAvailable = keyboardAvailable;
-    }
-
-    public void setKeyboardType(KeyboardType keyboardType) {
-        this.keyboardType = keyboardType;
-    }
 
     public StartDialog(Map<String,String> values){
         super(values);
     }
 
     public StartDialog() {
-        keyboardType = KeyboardType.STANDARD;
+        setKeyboardType(KeyboardType.STANDARD);
     }
 
-    @Override
-    public Long getChatId() {
-        return chatId;
-    }
 
-    @Override
-    public void setChatId(Long chatId) {
-        this.chatId = chatId;
-    }
-
-    @Override
-    public boolean getKeyboardAvailable() {
-        return keyboardAvailable;
-    }
 
     private String getDefaultAnswer(){
         return "Hello! Hello!\n Let's begin our learning!";
@@ -77,37 +45,7 @@ public class StartDialog extends Dialog {
         
     }
 
-    @Override
-    public ParseMode getParseMode() {
-        return ParseMode.HTML;
-    }
 
-    @Override
-    public Boolean getDisableWebPagePreview() {
-        return false;
-    }
-
-    @Override
-    public Integer getReplyToMessageId() {
-        return null;
-    }
-
-    @Override
-    public Keyboard getKeyboard() {
-        switch (keyboardType){
-            case STANDARD:
-                return new ReplyKeyboardMarkup(
-                        new String[]{"Show Hiragana"/*,"Show Katakana"*/},
-                        new String[]{"Quiz Hiragana"/*,"Quiz Katakana"*/},
-                        new String[]{"Change difficulty"}
-                )
-                        .oneTimeKeyboard(true)
-                        .selective(true)
-                        .resizeKeyboard(true);
-            default:
-                return null;
-        }
-    }
 
     public String getHiraganaAlphabet() {
         return "Here is hiragana:\n" +
@@ -129,18 +67,13 @@ public class StartDialog extends Dialog {
 
     @Override
     public Map<String, String> getParamsList() {
-        Map<String,String> values = new HashMap<>();
+        Map<String, String> values = super.getParamsList();
         values.put("dialogType",getClass().getCanonicalName());
-        values.put("chatId",String.valueOf(getChatId()));
-        values.put("keyboardAvailable",String.valueOf(getKeyboardAvailable()));
-        values.put("keyboardType",String.valueOf(getKeyboardType()));
         return values;
     }
 
     @Override
     public void setValues(Map<String, String> values) {
-        setChatId(Long.valueOf(values.get("chatId")));
-        setKeyboardAvailable(Boolean.valueOf(values.get("keyboardAvailable")));
-        setKeyboardType(KeyboardType.valueOf(values.get("keyboardType")));
+        super.setValues(values);
     }
 }
