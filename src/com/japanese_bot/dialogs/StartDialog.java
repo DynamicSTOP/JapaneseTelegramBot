@@ -20,8 +20,6 @@ public class StartDialog extends Dialog {
         setKeyboardType(KeyboardType.STANDARD);
     }
 
-
-
     private String getDefaultAnswer(){
         return "Hello! Hello!\n Let's begin our learning!";
     }
@@ -29,10 +27,6 @@ public class StartDialog extends Dialog {
     @Override
     public String getAnswer(String messageText) {
         switch (messageText){
-            case "Quiz Hiragana":
-                return getDefaultAnswer();
-            case "Quiz Katakana":
-                return getDefaultAnswer();
             case "Show Hiragana":
                 return getHiraganaAlphabet();
             case "Show Katakana":

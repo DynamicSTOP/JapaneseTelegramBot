@@ -8,7 +8,9 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by Leonid on 01.05.2016.
@@ -18,6 +20,7 @@ public class QuizManager {
     public static HashMap<String,Quiz> HiraganaQuizzes;
 
     public HashMap<String,Quiz> generateHiraganaQuizes(){
+        HiraganaQuizzes = new HashMap<>();
         try {
             File inputFile = new File("KanaQuizes.xml");
             DocumentBuilderFactory dbFactory
@@ -52,5 +55,9 @@ public class QuizManager {
 
     public static Quiz getHiraganaQuizByKey(String key){
         return HiraganaQuizzes.get(key);
+    }
+
+    public static Quiz getRandomHiraganaQuiz(){
+        return (Quiz) HiraganaQuizzes.values().toArray()[ new Random().nextInt(HiraganaQuizzes.size())];
     }
 }

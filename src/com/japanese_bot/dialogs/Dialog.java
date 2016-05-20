@@ -12,6 +12,9 @@ import java.util.Map;
  * Created by leonid on 29.04.16.
  */
 public abstract class Dialog extends Storable {
+
+    public static final String actionQuizHiragana="Quiz Hiragana";
+    public final static String actionBackToMainMenu="Back to main menu";
     public Dialog() {
     }
 
@@ -29,11 +32,11 @@ public abstract class Dialog extends Storable {
         this.chatId = chatId;
     }
 
-    private boolean keyboardAvailable = false;
+    private boolean keyboardAvailable;
 
     protected enum KeyboardType {STANDARD}
 
-    private KeyboardType keyboardType;
+    private KeyboardType keyboardType=KeyboardType.STANDARD;
 
     public KeyboardType getKeyboardType() {
         return keyboardType;
@@ -68,7 +71,7 @@ public abstract class Dialog extends Storable {
             case STANDARD:
                 return new ReplyKeyboardMarkup(
                         new String[]{"Show Hiragana"/*,"Show Katakana"*/},
-                        new String[]{"Quiz Hiragana"/*,"Quiz Katakana"*/},
+                        new String[]{actionQuizHiragana/*,"Quiz Katakana"*/},
                         new String[]{"Change difficulty"}
                 )
                         .oneTimeKeyboard(true)

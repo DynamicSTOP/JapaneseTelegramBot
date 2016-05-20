@@ -54,6 +54,8 @@ public class StartUpLoader {
             }
         }
 
+        QuizManager.HiraganaQuizzes = hiraganaQuizes;
+
         System.out.println("Hiragana quiz count = " + hiraganaQuizes.size());
     }
 }

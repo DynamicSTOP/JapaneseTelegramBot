@@ -45,8 +45,9 @@ public class Main {
         DialogManager dialogManager = new DialogManager(storage);
         startUpLoader.checkQuizes();
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         while (true) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             if (System.in.available() > 0)
                 if (br.readLine().equals("exit"))
                     break;
