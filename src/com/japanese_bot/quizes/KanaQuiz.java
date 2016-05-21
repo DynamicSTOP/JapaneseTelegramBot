@@ -45,7 +45,7 @@ public class KanaQuiz extends Quiz {
     /**
      * Example of answers. one pattern is borring!
      */
-    String[] questions={"Do you remember appropriate character for :reading: ?"};
+    String[] questions={"Character for ':reading:' is "};
 
     public void setQuizKey(String quizKey) {
         this.quizKey = quizKey;

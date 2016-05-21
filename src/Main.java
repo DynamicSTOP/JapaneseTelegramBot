@@ -59,7 +59,7 @@ public class Main {
                     Dialog dialog = dialogManager.processDialogUpdate(updates.get(i));
                     bot.sendMessage(
                             dialog.getChatId(),
-                            dialog.getAnswer(updates.get(i).message().text()),
+                            dialogManager.getAnswer(updates.get(i).message().text()),
                             dialog.getParseMode(),
                             dialog.getDisableWebPagePreview(),
                             dialog.getReplyToMessageId(),
