@@ -119,7 +119,6 @@ public class KanaQuiz extends Quiz {
 
         for(int i = 0; i < letters.size() && Answers.size() < 4; i++)
             Answers.add(letters.get(i));
-        System.out.println(Answers);
         //shuff shuff
         Collections.shuffle(Answers);
         return Answers;
