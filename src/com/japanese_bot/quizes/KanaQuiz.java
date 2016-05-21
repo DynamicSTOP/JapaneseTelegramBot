@@ -111,7 +111,7 @@ public class KanaQuiz extends Quiz {
 
         //removing chars that we already have
         for (int i = 0; i < Answers.size(); i++)
-               possibleChars.replace(Answers.get(i),"");
+            possibleChars = possibleChars.replace(Answers.get(i),"");
 
         //shuffle remaining
         List<String> letters = Arrays.asList(possibleChars.split(""));
@@ -119,7 +119,7 @@ public class KanaQuiz extends Quiz {
 
         for(int i = 0; i < letters.size() && Answers.size() < 4; i++)
             Answers.add(letters.get(i));
-
+        System.out.println(Answers);
         //shuff shuff
         Collections.shuffle(Answers);
         return Answers;
