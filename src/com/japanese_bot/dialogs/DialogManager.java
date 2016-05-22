@@ -42,7 +42,9 @@ public class DialogManager {
 
             if (dialog.getClass().equals(StartDialog.class)) {
                 if (update.message().text().equals(Dialog.actionQuizHiragana)) {
-                    dialog = createHiraganaQuizDialog();
+                    dialog = createHiraganaQuizDialog(false);
+                } else if(update.message().text().equals(Dialog.actionQuizHiraganaSyllabels)){
+                    dialog = createHiraganaQuizDialog(true);
                 }
             } else if (dialog.getClass().equals(HiraganaQuizDialog.class)) {
                 HiraganaQuizDialog hiraganaQuizDialog = (HiraganaQuizDialog) dialog;
@@ -52,7 +54,7 @@ public class DialogManager {
                     hiraganaQuizDialog.processUserQuizAnswer(update.message().text());
                     if (hiraganaQuizDialog.isAnsweredCorrectly()){
                         setAnswer(dialog.getAnswer(update.message().text()));
-                        dialog = createHiraganaQuizDialog();
+                        dialog = createHiraganaQuizDialog(hiraganaQuizDialog.isSyllableMode());
                     }
                 }
             }
@@ -72,8 +74,8 @@ public class DialogManager {
         return helloDialog;
     }
 
-    public Dialog createHiraganaQuizDialog() {
-        HiraganaQuizDialog dialog = new HiraganaQuizDialog();
+    public Dialog createHiraganaQuizDialog(boolean syllableMode) {
+        HiraganaQuizDialog dialog = new HiraganaQuizDialog(syllableMode);
         dialog.setQuiz(QuizManager.getRandomHiraganaQuiz());
         return dialog;
     }

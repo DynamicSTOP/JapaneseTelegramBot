@@ -30,7 +30,21 @@ public class HiraganaQuizDialog extends Dialog {
         super(values);
     }
 
+    protected boolean syllableMode;
+
+    public boolean isSyllableMode() {
+        return syllableMode;
+    }
+
+    public void setSyllableMode(boolean syllableMode) {
+        this.syllableMode = syllableMode;
+    }
+
     public HiraganaQuizDialog() {
+    }
+
+    public HiraganaQuizDialog(boolean syllableMode) {
+        this.syllableMode = syllableMode;
     }
 
     public boolean isAnsweredCorrectly(){
