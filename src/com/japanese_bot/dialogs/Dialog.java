@@ -13,8 +13,19 @@ import java.util.Map;
  */
 public abstract class Dialog extends Storable {
 
-    public static final String actionQuizHiragana="Quiz Hiragana";
-    public final static String actionBackToMainMenu="Back to main menu";
+    public static final String actionQuizHiragana = "Quiz Hiragana";
+    public static final String actionQuizHiraganaSyllabels = "Quiz Hiragana Syllables";
+    public static final String actionShowHiraganaMenu = "Hiragana";
+    public static final String actionShowHiragana = "Show Hiragana";
+
+    public static final String actionQuizKatakana = "Quiz Katakana";
+    public static final String actionQuizKatakanaSyllabels = "Quiz Katakana Syllables";
+    public static final String actionShowKatakanaMenu = "Katakana";
+    public static final String actionShowKatakana = "Show Katakana";
+
+    public static final String actionShowDifficultyMenu = "Change difficulty";
+    public static final String actionBackToMainMenu = "Back to main menu";
+
     public Dialog() {
     }
 
@@ -32,11 +43,11 @@ public abstract class Dialog extends Storable {
         this.chatId = chatId;
     }
 
-    private boolean keyboardAvailable;
+    protected boolean keyboardAvailable;
 
-    protected enum KeyboardType {STANDARD}
+    protected enum KeyboardType {STANDARD,HIRAGANA_MENU,KATAKANA_MENU,DIFFICULTY_MENU}
 
-    private KeyboardType keyboardType=KeyboardType.STANDARD;
+    protected KeyboardType keyboardType=KeyboardType.STANDARD;
 
     public KeyboardType getKeyboardType() {
         return keyboardType;
@@ -70,9 +81,9 @@ public abstract class Dialog extends Storable {
         switch (keyboardType) {
             case STANDARD:
                 return new ReplyKeyboardMarkup(
-                        new String[]{"Show Hiragana"/*,"Show Katakana"*/},
-                        new String[]{actionQuizHiragana/*,"Quiz Katakana"*/},
-                        new String[]{"Change difficulty"}
+                        new String[]{actionShowHiraganaMenu},
+                        /*new String[]{actionShowKatakanaMenu},*/
+                        new String[]{actionShowDifficultyMenu}
                 )
                         .oneTimeKeyboard(true)
                         .selective(true)

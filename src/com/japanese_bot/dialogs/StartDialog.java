@@ -21,28 +21,74 @@ public class StartDialog extends Dialog {
     }
 
     private String getDefaultAnswer(){
-        return "Hello! Hello!\n Let's begin our learning!";
+        return "What do you want to do?";
     }
 
     @Override
     public String getAnswer(String messageText) {
         switch (messageText){
-            case "Show Hiragana":
+            case Dialog.actionShowHiragana:
+                setKeyboardType(KeyboardType.HIRAGANA_MENU);
                 return getHiraganaAlphabet();
-            case "Show Katakana":
-                return getDefaultAnswer();
-            case "Change difficulty":
-                return getDefaultAnswer();
+            case Dialog.actionShowHiraganaMenu:
+                setKeyboardType(KeyboardType.HIRAGANA_MENU);
+                return "What shall we do?";
+            case Dialog.actionShowKatakana:
+                setKeyboardType(KeyboardType.KATAKANA_MENU);
+                return getKatakanaAlphabet();
+            case Dialog.actionShowKatakanaMenu:
+                setKeyboardType(KeyboardType.KATAKANA_MENU);
+                return "still implementing. Taidana purogurama ^^";
+            case Dialog.actionShowDifficultyMenu:
+                setKeyboardType(KeyboardType.DIFFICULTY_MENU);
+                return "still implementing. Taidana purogurama ^^";
             default:
+                setKeyboardType(KeyboardType.STANDARD);
                 return getDefaultAnswer();
         }
         
     }
 
+    public Keyboard getKeyboard() {
+        switch (keyboardType) {
+            case STANDARD:
+                return new ReplyKeyboardMarkup(
+                        new String[]{actionShowHiraganaMenu},
+                        new String[]{actionShowKatakanaMenu},
+                        new String[]{actionShowDifficultyMenu}
+                )
+                        .oneTimeKeyboard(true)
+                        .selective(true)
+                        .resizeKeyboard(true);
+            case HIRAGANA_MENU:
+                return new ReplyKeyboardMarkup(
+                        new String[]{actionShowHiragana},
+                        new String[]{actionQuizHiragana},
+                        new String[]{actionQuizHiraganaSyllabels},
+                        new String[]{actionBackToMainMenu}
+                )
+                        .oneTimeKeyboard(true)
+                        .selective(true)
+                        .resizeKeyboard(true);
+
+            case KATAKANA_MENU:
+                return new ReplyKeyboardMarkup(
+                        new String[]{actionShowKatakana},
+                        new String[]{actionQuizKatakana},
+                        new String[]{actionQuizKatakanaSyllabels},
+                        new String[]{actionBackToMainMenu}
+                )
+                        .oneTimeKeyboard(true)
+                        .selective(true)
+                        .resizeKeyboard(true);
+            default:
+                return null;
+        }
+    }
 
 
     public String getHiraganaAlphabet() {
-        return "Here is hiragana:\n" +
+        return "Here is hiragana that you will see in quizzes:\n" +
                 "<code>\n" +
                 "  \t\ta\t\ti\t\tu\t\te\t\t o\n" +
                 " \t\tあ\t\tい\t\tう\t\tえ\t\tお\n" +
@@ -55,7 +101,32 @@ public class StartDialog extends Dialog {
                 "y\t\tや\t\t \t\tゆ\t\t \t\tよ\n" +
                 "r\t\tら\t\tり\t\tる\t\tれ\t\tろ\n" +
                 "w\t\tわ\t\t \t\t \t\t  \t\tを\n" +
-                "</code>";
+                "</code>\n" +
+                "This is just an example of characters that you might see in chat.\n" +
+                "If you are serious about learning you'd better check this one\n" +
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Table_hiragana.svg/1280px-Table_hiragana.svg.png"+
+                "Please note that 'wi' and 'we' are outdated and you even might never see them in modern Japanese.";
+    }
+
+    public String getKatakanaAlphabet() {
+        return "Here is katakana that you will see in quizzes:\n" +
+                "<code>\n" +
+                "  \t\ta\t\ti\t\tu\t\te\t\t o\n" +
+                " \t\tア\t\tイ\t\tウ\t\tエ\t\tオ\n" +
+                "k\t\tカ\t\tキ\t\tク\t\tケ\t\tコ\n" +
+                "s\t\tサ\t\tシ\t\tス\t\tセ\t\tソ\n" +
+                "t\t\tタ\t\tチ\t\tツ\t\tテ\t\tト\n" +
+                "n\t\tナ\t\tニ\t\tヌ\t\tネ\tノ\n" +
+                "h\t\tハ\t\tヒ\t\tフ\t\tヘ\tホ\n" +
+                "m\t\tマ\t\tミ\t\tム\t\tメ\tモ\n" +
+                "y\t\tヤ\t\t \t\tユ\t\t \t\tヨ\n" +
+                "r\t\tラ\t\tリ\t\tル\t\tレ\t\tロ\n" +
+                "w\t\tワ\t\t \t\t \t\t  \t\tヲ\n" +
+                "</code>\n" +
+                "This is just an example of characters that you might see in chat.\n" +
+                "If you are serious about learning you'd better check this one\n" +
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Table_katakana.svg/1280px-Table_katakana.svg.png\n"+
+                "Please note that 'wi' and 'we' are outdated and you even might never see them in modern Japanese.";
     }
 
 

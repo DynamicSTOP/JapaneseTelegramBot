@@ -6,7 +6,7 @@ import java.util.*;
  * Created by Leonid on 01.05.2016.
  */
 public class KanaQuiz extends Quiz {
-    String hiraganaCharacters =
+    static String hiraganaCharacters =
                     "あいうえお" +
                     "かきくけこ" +
                     "さしすせそ" +
@@ -16,7 +16,7 @@ public class KanaQuiz extends Quiz {
                     "まみむめも" +
                     "やゆよらり" +
                     "るれろわを";
-    String katakanaCharacters =
+    static String katakanaCharacters =
             "アイウエオ" +
             "カキクケコ" +
             "サシスセソ" +
@@ -28,7 +28,7 @@ public class KanaQuiz extends Quiz {
             "ラリルレロ" +
             "ワヰヱヲ";
 
-    String  syllabls[] = {
+    static String syllabls[] = {
                 "a","i","u","e","o","ka","ki","ku","ke","ko","sa","shi","su","se","so","ta","chi","tsu","te",
                 "to","na","ni","nu","ne","no","ha","hi","fu","he","ho","ma","mi","mu","me","mo","ya","yu","yo",
                 "ra","ri","ru","re","ro","wa","wo","n"

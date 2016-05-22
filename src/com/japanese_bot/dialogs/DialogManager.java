@@ -35,7 +35,7 @@ public class DialogManager {
 
 
     public Dialog processDialogUpdate(Update update) {
-        System.out.println(update.message().text());
+        System.out.println(update.message().from().username() + ":" + update.message().text());
         setAnswer("");
         try {
             dialog = storage.getDialog(update.message().chat().id());
@@ -67,9 +67,6 @@ public class DialogManager {
     }
 
     private Dialog makeHelloDialog(Update update) {
-        if (!update.message().text().equals("/start")) {
-            System.out.println("ERROR: expected \"/start\", got \"" + update.message().text() + "\" from user " + update.message());
-        }
         Dialog helloDialog = new StartDialog();
         helloDialog.setChatId(update.message().chat().id());
         return helloDialog;
