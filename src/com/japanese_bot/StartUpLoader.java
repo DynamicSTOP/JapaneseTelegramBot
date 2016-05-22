@@ -1,5 +1,6 @@
 package com.japanese_bot;
 
+import com.japanese_bot.quizes.KanaQuiz;
 import com.japanese_bot.quizes.Quiz;
 import com.japanese_bot.quizes.QuizManager;
 import com.japanese_bot.storages.IStorage;
@@ -37,7 +38,7 @@ public class StartUpLoader {
                 quizNumber = Integer.valueOf(storage.get("QUIZ:KATAKANA:COUNT"));
         } catch (Exception e) {quizNumber=0;}
 
-        HashMap<String,Quiz> hiraganaQuizes,katakanaQuizes;
+        HashMap<String,KanaQuiz> hiraganaQuizes,katakanaQuizes;
         if(quizNumber==0){
             manager.generateKanaQuizes();
 
@@ -58,13 +59,20 @@ public class StartUpLoader {
             katakanaQuizes = new HashMap<>();
             for (int i = 0; i < quizNumber; i++) {
                 try{
-                    hiraganaQuizes.put("QUIZ:HIRAGANA:"+String.valueOf(i),storage.getQuiz("QUIZ:HIRAGANA:"+String.valueOf(i)));
+                    KanaQuiz quiz = (KanaQuiz) storage.getQuiz("QUIZ:HIRAGANA:"+String.valueOf(i));
+                    quiz.setQuizKey("QUIZ:HIRAGANA:"+String.valueOf(i));
+                    quiz.setAlhpabetType(KanaQuiz.alhpabetTypes.HIRAGANA);
+                    hiraganaQuizes.put("QUIZ:HIRAGANA:"+String.valueOf(i),quiz);
                 } catch (Exception e){
                     System.out.println("EXCEPTION: getting hiragana quiz from storage problem \"" + e.getMessage() + "\"");
                 }
 
                 try{
-                    katakanaQuizes.put("QUIZ:KATKANA:"+String.valueOf(i),storage.getQuiz("QUIZ:KATAKANA:"+String.valueOf(i)));
+                    KanaQuiz quiz = (KanaQuiz) storage.getQuiz("QUIZ:KATAKANA:"+String.valueOf(i));
+                    quiz.setQuizKey("QUIZ:KATAKANA:"+String.valueOf(i));
+                    quiz.setAlhpabetType(KanaQuiz.alhpabetTypes.KATAKANA);
+
+                    katakanaQuizes.put("QUIZ:KATAKANA:"+String.valueOf(i),quiz);
                 } catch (Exception e){
                     System.out.println("EXCEPTION: getting katakana quiz from storage problem \"" + e.getMessage() + "\"");
                 }
@@ -75,5 +83,6 @@ public class StartUpLoader {
         QuizManager.KatakanaQuizzes = katakanaQuizes;
 
         System.out.println("Hiragana quiz count = " + hiraganaQuizes.size());
+        System.out.println("Katakana quiz count = " + hiraganaQuizes.size());
     }
 }

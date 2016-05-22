@@ -17,31 +17,31 @@ import java.util.Random;
  */
 public class QuizManager {
 
-    public static HashMap<String,Quiz> HiraganaQuizzes,KatakanaQuizzes;
+    public static HashMap<String,KanaQuiz> HiraganaQuizzes, KatakanaQuizzes;
 
-    public static HashMap<String, Quiz> getHiraganaQuizzes() {
+    public static HashMap<String, KanaQuiz> getHiraganaQuizzes() {
         return HiraganaQuizzes;
     }
 
-    public static HashMap<String, Quiz> getKatakanaQuizzes() {
+    public static HashMap<String, KanaQuiz> getKatakanaQuizzes() {
         return KatakanaQuizzes;
     }
 
     enum QuizType {HIRAGANA, KATAKANA}
 
 
-    public HashMap<String,Quiz> generateKanaQuizes(){
+    public HashMap<String,KanaQuiz> generateKanaQuizes(){
         HiraganaQuizzes = new HashMap<>();
         KatakanaQuizzes = new HashMap<>();
         try {
-            File inputFile = new File("KanaQuizes.xml");
+            File inputFile = new File("KanaQuizzes.xml");
             DocumentBuilderFactory dbFactory
                     = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
 
-            Node nKanaQuizzes = doc.getElementsByTagName("kanaQuizes").item(0);
+            Node nKanaQuizzes = doc.getElementsByTagName("kanaQuizzes").item(0);
             Element eKanaQuizzes = (Element) nKanaQuizzes;
             NodeList quizNodes = eKanaQuizzes.getElementsByTagName("quiz");
 
@@ -51,7 +51,7 @@ public class QuizManager {
                 addQuiz(QuizType.KATAKANA,(Element) node);
             }
         } catch (Exception e){
-            System.out.println("Generating Hiragan Quizes from xml fail -> "+ e.getMessage());
+            System.out.println("Generating Kana Quizzes from xml fail -> "+ e.getMessage());
         }
 
         return HiraganaQuizzes;
@@ -66,7 +66,8 @@ public class QuizManager {
                                 "QUIZ:HIRAGANA:"+quiz.getAttribute("id"),
                                 quiz.getElementsByTagName("hiragana").item(0).getTextContent(),
                                 quiz.getElementsByTagName("romaji").item(0).getTextContent(),
-                                quiz.getElementsByTagName("hiraganaSimilar").item(0).getTextContent()
+                                quiz.getElementsByTagName("hiraganaSimilar").item(0).getTextContent(),
+                                KanaQuiz.alhpabetTypes.HIRAGANA
                         ));
                 break;
             case KATAKANA:
@@ -76,11 +77,11 @@ public class QuizManager {
                                 "QUIZ:KATAKANA:"+quiz.getAttribute("id"),
                                 quiz.getElementsByTagName("katakana").item(0).getTextContent(),
                                 quiz.getElementsByTagName("romaji").item(0).getTextContent(),
-                                quiz.getElementsByTagName("katakanaSimilar").item(0).getTextContent()
+                                quiz.getElementsByTagName("katakanaSimilar").item(0).getTextContent(),
+                                KanaQuiz.alhpabetTypes.KATAKANA
                         ));
                 break;
         }
-
     }
 
     public static Quiz getHiraganaQuizByKey(String key){
@@ -91,11 +92,11 @@ public class QuizManager {
         return KatakanaQuizzes.get(key);
     }
 
-    public static Quiz getRandomHiraganaQuiz(){
-        return (Quiz) HiraganaQuizzes.values().toArray()[ new Random().nextInt(HiraganaQuizzes.size())];
+    public static KanaQuiz getRandomHiraganaQuiz(){
+        return (KanaQuiz) HiraganaQuizzes.values().toArray()[ new Random().nextInt(HiraganaQuizzes.size())];
     }
 
-    public static Quiz getRandomKatakanaQuiz(){
-        return (Quiz) KatakanaQuizzes.values().toArray()[ new Random().nextInt(KatakanaQuizzes.size())];
+    public static KanaQuiz getRandomKatakanaQuiz(){
+        return (KanaQuiz) KatakanaQuizzes.values().toArray()[ new Random().nextInt(KatakanaQuizzes.size())];
     }
 }

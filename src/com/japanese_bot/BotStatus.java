@@ -10,7 +10,6 @@ import java.util.Map;
  */
 public class BotStatus extends Storable {
     private int lastUpdateId = -1;
-    private int hiraganaQuizCount;
 
     public BotStatus(){}
     public BotStatus(Map<String,String> values){
@@ -25,26 +24,15 @@ public class BotStatus extends Storable {
         this.lastUpdateId = lastUpdateId;
     }
 
-
-    public int getHiraganaQuizCount() {
-        return hiraganaQuizCount;
-    }
-
-    public void setHiraganaQuizCount(int hiraganaQuizCount) {
-        this.hiraganaQuizCount = hiraganaQuizCount;
-    }
-
     @Override
     public Map<String, String> getParamsList() {
         Map<String,String> values = new HashMap<>();
         values.put("lastUpdateId",String.valueOf(getLastUpdateId()));
-        values.put("hiraganaQuizCount",String.valueOf(getHiraganaQuizCount()));
         return values;
     }
 
     @Override
     public void setValues(Map<String, String> values) {
-        setHiraganaQuizCount(Integer.valueOf(values.get("hiraganaQuizCount")));
         setLastUpdateId(Integer.valueOf(values.get("lastUpdateId")));
     }
 }

@@ -1,6 +1,7 @@
 package com.japanese_bot.dialogs;
 
 import com.japanese_bot.Exceptions.EmptyStringException;
+import com.japanese_bot.quizes.KanaQuiz;
 import com.japanese_bot.quizes.Quiz;
 import com.japanese_bot.quizes.QuizManager;
 import com.japanese_bot.storages.IStorage;
@@ -77,7 +78,7 @@ public class DialogManager {
 
     public Dialog createHiraganaQuizDialog(boolean syllableMode) {
         KanaQuizDialog dialog = new KanaQuizDialog(syllableMode);
-        Quiz quiz = QuizManager.getRandomHiraganaQuiz();
+        KanaQuiz quiz = QuizManager.getRandomHiraganaQuiz();
         quiz.setSyllableMode(syllableMode);
         dialog.setQuiz(quiz);
         return dialog;

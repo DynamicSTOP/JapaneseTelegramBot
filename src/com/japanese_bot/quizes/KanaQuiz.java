@@ -36,7 +36,7 @@ public class KanaQuiz extends Quiz {
             )
     );
 
-    protected enum alhpabetTypes {HIRAGANA, KATAKANA}
+    public enum alhpabetTypes {HIRAGANA, KATAKANA}
 
     public alhpabetTypes getAlhpabetType() {
         return alhpabetType;
@@ -44,6 +44,18 @@ public class KanaQuiz extends Quiz {
 
     public void setAlhpabetType(alhpabetTypes alhpabetType) {
         this.alhpabetType = alhpabetType;
+    }
+
+    public boolean isHiraganaQuiz(){
+        return alhpabetType.equals(alhpabetTypes.HIRAGANA);
+    }
+
+    public static boolean isHiraganaQuiz(alhpabetTypes alhpabetType){
+        return alhpabetType.equals(alhpabetTypes.HIRAGANA);
+    }
+
+    public static boolean isHiraganaQuiz(String alhpabetType){
+        return isHiraganaQuiz(alhpabetTypes.valueOf(alhpabetType));
     }
 
     protected alhpabetTypes alhpabetType;
@@ -87,11 +99,12 @@ public class KanaQuiz extends Quiz {
 
     private String quizKey;
 
-    public KanaQuiz(String quizKey, String kanaCharacter, String appropriateSyllable, String confusingCharacters){
+    public KanaQuiz(String quizKey, String kanaCharacter, String appropriateSyllable, String confusingCharacters,alhpabetTypes alhpabetType){
         this.quizKey = quizKey;
         this.kanaCharacter = kanaCharacter;
         this.appropriateSyllable = appropriateSyllable;
         this.confusingCharacters = confusingCharacters;
+        this.alhpabetType = alhpabetType;
     }
 
     public KanaQuiz(Map<String,String> values){
@@ -196,7 +209,6 @@ public class KanaQuiz extends Quiz {
     public Map<String, String> getParamsList() {
         Map<String,String> values = new HashMap<>();
         values.put("quizType",getClass().getCanonicalName());
-        values.put("key",getKey());
         values.put("kanaCharacter", kanaCharacter);
         values.put("appropriateSyllable",appropriateSyllable);
         values.put("confusingCharacters",confusingCharacters);
@@ -208,6 +220,5 @@ public class KanaQuiz extends Quiz {
         setAppropriateSyllable(values.get("appropriateSyllable"));
         setConfusingCharacters(values.get("confusingCharacters"));
         setKanaCharacter(values.get("kanaCharacter"));
-        setQuizKey(values.get("key"));
     }
 }

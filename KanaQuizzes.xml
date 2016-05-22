@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<kanaQuizes>
+<kanaQuizzes>
     <quiz id="0">
         <hiragana>あ</hiragana>
         <hiraganaSimilar>おわぬめ</hiraganaSimilar>
@@ -331,4 +331,4 @@
         <katakana>ン</katakana>
         <katakanaSimilar>ツソシノ</katakanaSimilar>
     </quiz>
-</kanaQuizes>
+</kanaQuizzes>

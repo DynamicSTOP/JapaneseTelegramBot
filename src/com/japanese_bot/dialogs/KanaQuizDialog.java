@@ -1,5 +1,6 @@
 package com.japanese_bot.dialogs;
 
+import com.japanese_bot.quizes.KanaQuiz;
 import com.japanese_bot.quizes.Quiz;
 import com.japanese_bot.quizes.QuizManager;
 import com.pengrad.telegrambot.model.request.Keyboard;
@@ -12,7 +13,7 @@ import java.util.Map;
  * Created by Leonid on 18.05.2016.
  */
 public class KanaQuizDialog extends Dialog {
-    Quiz quiz;
+    KanaQuiz quiz;
 
     protected enum QuizState {GUESSED, ANSWERED_CORRECT, ANSWERED_INCORRECT}
 
@@ -55,7 +56,7 @@ public class KanaQuizDialog extends Dialog {
         return this.quiz;
     }
 
-    public void setQuiz(Quiz quiz) {
+    public void setQuiz(KanaQuiz quiz) {
         this.quiz = quiz;
     }
 
@@ -86,6 +87,7 @@ public class KanaQuizDialog extends Dialog {
         Map<String, String> values = super.getParamsList();
         values.put("dialogType", getClass().getCanonicalName());
         values.put("quizKey", quiz.getKey());
+        values.put("quizABType", String.valueOf(quiz.getAlhpabetType()));
         values.put("quizState", String.valueOf(quizState));
         values.put("syllableMode", String.valueOf(syllableMode));
         return values;
@@ -94,7 +96,11 @@ public class KanaQuizDialog extends Dialog {
     @Override
     public void setValues(Map<String, String> values) {
         super.setValues(values);
-        quiz = QuizManager.getHiraganaQuizByKey(values.get("quizKey"));
+        if( KanaQuiz.isHiraganaQuiz(values.get("quizABType"))){
+            quiz = (KanaQuiz) QuizManager.getHiraganaQuizByKey(values.get("quizKey"));
+        } else {
+            quiz = (KanaQuiz) QuizManager.getKatakanaQuizByKey(values.get("quizKey"));
+        }
         quizState = QuizState.valueOf(values.get("quizState"));
         syllableMode = Boolean.valueOf(values.get("syllableMode"));
         quiz.setSyllableMode(syllableMode);

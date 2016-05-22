@@ -104,7 +104,7 @@ public class StartDialog extends Dialog {
                 "</code>\n" +
                 "This is just an example of characters that you might see in chat.\n" +
                 "If you are serious about learning you'd better check this one\n" +
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Table_hiragana.svg/1280px-Table_hiragana.svg.png"+
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Table_hiragana.svg/1280px-Table_hiragana.svg.png\n"+
                 "Please note that 'wi' and 'we' are outdated and you even might never see them in modern Japanese.";
     }
 
