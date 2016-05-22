@@ -157,7 +157,11 @@ public class KanaQuiz extends Quiz {
                 answers.add(letters.get(1));
             }
         }
-        String possibleChars = new String(hiraganaCharacters);
+        String possibleChars;
+        if(isHiraganaQuiz())
+            possibleChars = new String(hiraganaCharacters);
+        else
+            possibleChars = new String(katakanaCharacters);
 
         //removing chars that we already have
         for (int i = 0; i < answers.size(); i++)

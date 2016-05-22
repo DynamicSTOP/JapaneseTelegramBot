@@ -117,4 +117,8 @@ public class KanaQuizDialog extends Dialog {
                 .selective(true)
                 .resizeKeyboard(true);
     }
+
+    public boolean isHiraganaDialog(){
+        return quiz.isHiraganaQuiz();
+    }
 }

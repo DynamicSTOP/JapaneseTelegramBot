@@ -47,6 +47,10 @@ public class DialogManager {
                     dialog = createHiraganaQuizDialog(false);
                 } else if(update.message().text().equals(Dialog.actionQuizHiraganaSyllabels)){
                     dialog = createHiraganaQuizDialog(true);
+                } else if(update.message().text().equals(Dialog.actionQuizKatakana)){
+                    dialog = createKatakanaQuizDialog(false);
+                } else if(update.message().text().equals(Dialog.actionQuizKatakanaSyllabels)){
+                    dialog = createKatakanaQuizDialog(true);
                 }
             } else if (dialog.getClass().equals(KanaQuizDialog.class)) {
                 KanaQuizDialog kanaQuizDialog = (KanaQuizDialog) dialog;
@@ -56,7 +60,10 @@ public class DialogManager {
                     kanaQuizDialog.processUserQuizAnswer(update.message().text());
                     if (kanaQuizDialog.isAnsweredCorrectly()){
                         setAnswer(dialog.getAnswer(update.message().text()));
-                        dialog = createHiraganaQuizDialog(kanaQuizDialog.isSyllableMode());
+                        if(kanaQuizDialog.isHiraganaDialog())
+                            dialog = createHiraganaQuizDialog(kanaQuizDialog.isSyllableMode());
+                        else
+                            dialog = createKatakanaQuizDialog(kanaQuizDialog.isSyllableMode());
                     }
                 }
             }
@@ -79,6 +86,14 @@ public class DialogManager {
     public Dialog createHiraganaQuizDialog(boolean syllableMode) {
         KanaQuizDialog dialog = new KanaQuizDialog(syllableMode);
         KanaQuiz quiz = QuizManager.getRandomHiraganaQuiz();
+        quiz.setSyllableMode(syllableMode);
+        dialog.setQuiz(quiz);
+        return dialog;
+    }
+
+    public Dialog createKatakanaQuizDialog(boolean syllableMode) {
+        KanaQuizDialog dialog = new KanaQuizDialog(syllableMode);
+        KanaQuiz quiz = QuizManager.getRandomKatakanaQuiz();
         quiz.setSyllableMode(syllableMode);
         dialog.setQuiz(quiz);
         return dialog;

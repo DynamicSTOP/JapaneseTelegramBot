@@ -38,7 +38,7 @@ public class StartDialog extends Dialog {
                 return getKatakanaAlphabet();
             case Dialog.actionShowKatakanaMenu:
                 setKeyboardType(KeyboardType.KATAKANA_MENU);
-                return "still implementing. Taidana purogurama ^^";
+                return "What shall we do?";
             case Dialog.actionShowDifficultyMenu:
                 setKeyboardType(KeyboardType.DIFFICULTY_MENU);
                 return "still implementing. Taidana purogurama ^^";
@@ -54,8 +54,8 @@ public class StartDialog extends Dialog {
             case STANDARD:
                 return new ReplyKeyboardMarkup(
                         new String[]{actionShowHiraganaMenu},
-                        new String[]{actionShowKatakanaMenu},
-                        new String[]{actionShowDifficultyMenu}
+                        new String[]{actionShowKatakanaMenu}/*,
+                        new String[]{actionShowDifficultyMenu}*/
                 )
                         .oneTimeKeyboard(true)
                         .selective(true)
