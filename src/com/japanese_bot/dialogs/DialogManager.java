@@ -23,7 +23,7 @@ public class DialogManager {
     public String getAnswer(String messageText) {
         if (dialog.getClass().equals(StartDialog.class))
             return dialog.getAnswer(messageText);
-        else if(dialog.getClass().equals(HiraganaQuizDialog.class)){
+        else if(dialog.getClass().equals(KanaQuizDialog.class)){
             return answer +" "+ dialog.getAnswer(messageText);
         }
 
@@ -47,15 +47,15 @@ public class DialogManager {
                 } else if(update.message().text().equals(Dialog.actionQuizHiraganaSyllabels)){
                     dialog = createHiraganaQuizDialog(true);
                 }
-            } else if (dialog.getClass().equals(HiraganaQuizDialog.class)) {
-                HiraganaQuizDialog hiraganaQuizDialog = (HiraganaQuizDialog) dialog;
+            } else if (dialog.getClass().equals(KanaQuizDialog.class)) {
+                KanaQuizDialog kanaQuizDialog = (KanaQuizDialog) dialog;
                 if (update.message().text().equals(dialog.actionBackToMainMenu)) {
                     dialog = makeHelloDialog(update);
                 } else {
-                    hiraganaQuizDialog.processUserQuizAnswer(update.message().text());
-                    if (hiraganaQuizDialog.isAnsweredCorrectly()){
+                    kanaQuizDialog.processUserQuizAnswer(update.message().text());
+                    if (kanaQuizDialog.isAnsweredCorrectly()){
                         setAnswer(dialog.getAnswer(update.message().text()));
-                        dialog = createHiraganaQuizDialog(hiraganaQuizDialog.isSyllableMode());
+                        dialog = createHiraganaQuizDialog(kanaQuizDialog.isSyllableMode());
                     }
                 }
             }
@@ -76,7 +76,7 @@ public class DialogManager {
     }
 
     public Dialog createHiraganaQuizDialog(boolean syllableMode) {
-        HiraganaQuizDialog dialog = new HiraganaQuizDialog(syllableMode);
+        KanaQuizDialog dialog = new KanaQuizDialog(syllableMode);
         Quiz quiz = QuizManager.getRandomHiraganaQuiz();
         quiz.setSyllableMode(syllableMode);
         dialog.setQuiz(quiz);

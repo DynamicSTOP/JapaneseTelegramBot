@@ -11,22 +11,22 @@ import java.util.Map;
 /**
  * Created by Leonid on 18.05.2016.
  */
-public class HiraganaQuizDialog extends Dialog {
+public class KanaQuizDialog extends Dialog {
     Quiz quiz;
 
     protected enum QuizState {GUESSED, ANSWERED_CORRECT, ANSWERED_INCORRECT}
 
-    public HiraganaQuizDialog.QuizState getQuizState() {
+    public KanaQuizDialog.QuizState getQuizState() {
         return this.quizState;
     }
 
-    public void setQuizState(HiraganaQuizDialog.QuizState quizState) {
+    public void setQuizState(KanaQuizDialog.QuizState quizState) {
         this.quizState = quizState;
     }
 
-    private HiraganaQuizDialog.QuizState quizState = QuizState.GUESSED;
+    private KanaQuizDialog.QuizState quizState = QuizState.GUESSED;
 
-    public HiraganaQuizDialog(Map<String, String> values) {
+    public KanaQuizDialog(Map<String, String> values) {
         super(values);
     }
 
@@ -40,10 +40,10 @@ public class HiraganaQuizDialog extends Dialog {
         this.syllableMode = syllableMode;
     }
 
-    public HiraganaQuizDialog() {
+    public KanaQuizDialog() {
     }
 
-    public HiraganaQuizDialog(boolean syllableMode) {
+    public KanaQuizDialog(boolean syllableMode) {
         this.syllableMode = syllableMode;
     }
 

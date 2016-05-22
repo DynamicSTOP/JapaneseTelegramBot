@@ -68,7 +68,8 @@ public class Main {
                     storage.setBotStatus(botStatus);
                 }
             } catch (RetrofitError e) {
-                System.out.println("EXCEPTION: getting updates exception \"" + e.getClass() + "\" \"" + e.getMessage() + "\"");
+                if(!e.getMessage().equals("Read timed out"))
+                    System.out.println("EXCEPTION: getting updates exception \"" + e.getClass() + "\" \"" + e.getMessage() + "\"");
             }
         }
 

@@ -36,6 +36,18 @@ public class KanaQuiz extends Quiz {
             )
     );
 
+    protected enum alhpabetTypes {HIRAGANA, KATAKANA}
+
+    public alhpabetTypes getAlhpabetType() {
+        return alhpabetType;
+    }
+
+    public void setAlhpabetType(alhpabetTypes alhpabetType) {
+        this.alhpabetType = alhpabetType;
+    }
+
+    protected alhpabetTypes alhpabetType;
+
     /**
      * For example 'あ'
      */
