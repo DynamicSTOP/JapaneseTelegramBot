@@ -63,7 +63,7 @@ public class HiraganaQuizDialog extends Dialog {
     public String getAnswer(String messageText) {
         switch (quizState) {
             case ANSWERED_INCORRECT:
-                return "No it's not.";
+                return "Nope, try again";
             case ANSWERED_CORRECT:
                 return "You are correct!";
             case GUESSED:
@@ -87,6 +87,7 @@ public class HiraganaQuizDialog extends Dialog {
         values.put("dialogType", getClass().getCanonicalName());
         values.put("quizKey", quiz.getKey());
         values.put("quizState", String.valueOf(quizState));
+        values.put("syllableMode", String.valueOf(syllableMode));
         return values;
     }
 
@@ -95,6 +96,8 @@ public class HiraganaQuizDialog extends Dialog {
         super.setValues(values);
         quiz = QuizManager.getHiraganaQuizByKey(values.get("quizKey"));
         quizState = QuizState.valueOf(values.get("quizState"));
+        syllableMode = Boolean.valueOf(values.get("syllableMode"));
+        quiz.setSyllableMode(syllableMode);
     }
 
     @Override

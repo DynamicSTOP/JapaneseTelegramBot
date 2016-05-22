@@ -6,7 +6,7 @@ import java.util.*;
  * Created by Leonid on 01.05.2016.
  */
 public class KanaQuiz extends Quiz {
-    static String hiraganaCharacters =
+    private static String hiraganaCharacters =
                     "あいうえお" +
                     "かきくけこ" +
                     "さしすせそ" +
@@ -16,7 +16,7 @@ public class KanaQuiz extends Quiz {
                     "まみむめも" +
                     "やゆよらり" +
                     "るれろわを";
-    static String katakanaCharacters =
+    private static String katakanaCharacters =
             "アイウエオ" +
             "カキクケコ" +
             "サシスセソ" +
@@ -28,16 +28,18 @@ public class KanaQuiz extends Quiz {
             "ラリルレロ" +
             "ワヰヱヲ";
 
-    static String syllabls[] = {
+    private static List<String> syllabls = new ArrayList<>(
+            Arrays.asList(
                 "a","i","u","e","o","ka","ki","ku","ke","ko","sa","shi","su","se","so","ta","chi","tsu","te",
                 "to","na","ni","nu","ne","no","ha","hi","fu","he","ho","ma","mi","mu","me","mo","ya","yu","yo",
                 "ra","ri","ru","re","ro","wa","wo","n"
-    };
+            )
+    );
 
     /**
      * For example 'あ'
      */
-    String correctAnswer;
+    String kanaCharacter;
     /**
      * This would be 'a' for あ
      */
@@ -51,7 +53,9 @@ public class KanaQuiz extends Quiz {
     /**
      * Example of answers. one pattern is borring!
      */
-    String[] questions={"Character for ':reading:' is "};
+    String[] questionsKana ={"Character for ':reading:' is "};
+
+    String[] questionsSyllable ={"':character:' is pronounced as "};
 
     public void setQuizKey(String quizKey) {
         this.quizKey = quizKey;
@@ -65,15 +69,15 @@ public class KanaQuiz extends Quiz {
         this.appropriateSyllable = appropriateSyllable;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
+    public void setKanaCharacter(String kanaCharacter) {
+        this.kanaCharacter = kanaCharacter;
     }
 
     private String quizKey;
 
-    public KanaQuiz(String quizKey,String correctAnswer,String appropriateSyllable, String confusingCharacters){
+    public KanaQuiz(String quizKey, String kanaCharacter, String appropriateSyllable, String confusingCharacters){
         this.quizKey = quizKey;
-        this.correctAnswer = correctAnswer;
+        this.kanaCharacter = kanaCharacter;
         this.appropriateSyllable = appropriateSyllable;
         this.confusingCharacters = confusingCharacters;
     }
@@ -85,13 +89,21 @@ public class KanaQuiz extends Quiz {
     @Override
     public String createQuestion() {
         Random r = new Random();
-        String QuestionBase = questions[r.nextInt(questions.length)];
-        return QuestionBase.replace(":reading:",appropriateSyllable);
+        if(isSyllableMode()){
+            String QuestionBase = questionsSyllable[r.nextInt(questionsSyllable.length)];
+            return QuestionBase.replace(":character:",kanaCharacter);
+        } else {
+            String QuestionBase = questionsKana[r.nextInt(questionsKana.length)];
+            return QuestionBase.replace(":reading:", appropriateSyllable);
+        }
+
     }
 
-    @Override
     public String getCorrectAnswer() {
-        return correctAnswer;
+        if(syllableMode)
+            return appropriateSyllable;
+        else
+            return kanaCharacter;
     }
 
     @Override
@@ -99,35 +111,60 @@ public class KanaQuiz extends Quiz {
         List<String> Answers= new ArrayList<>();
         Answers.add(getCorrectAnswer());
 
+        if (syllableMode)
+              return getAnswersRomaji(Answers);
+        else
+              return getAnswersKana(Answers);
+    }
+
+    private List<String> getAnswersKana(List<String> answers){
         // 0,1,2 chars are going to be added here
         if(confusingCharacters.length()>0){
             if(confusingCharacters.length()==1){
-                Answers.add(String.valueOf(confusingCharacters.charAt(0)));
+                answers.add(String.valueOf(confusingCharacters.charAt(0)));
             } else if(confusingCharacters.length()==2){
-                Answers.add(String.valueOf(confusingCharacters.charAt(0)));
-                Answers.add(String.valueOf(confusingCharacters.charAt(1)));
+                answers.add(String.valueOf(confusingCharacters.charAt(0)));
+                answers.add(String.valueOf(confusingCharacters.charAt(1)));
             } else {
                 List<String> letters = Arrays.asList(confusingCharacters.split(""));
                 Collections.shuffle(letters);
-                Answers.add(letters.get(0));
-                Answers.add(letters.get(1));
+                answers.add(letters.get(0));
+                answers.add(letters.get(1));
             }
         }
         String possibleChars = new String(hiraganaCharacters);
 
         //removing chars that we already have
-        for (int i = 0; i < Answers.size(); i++)
-            possibleChars = possibleChars.replace(Answers.get(i),"");
+        for (int i = 0; i < answers.size(); i++)
+            possibleChars = possibleChars.replace(answers.get(i),"");
 
         //shuffle remaining
         List<String> letters = Arrays.asList(possibleChars.split(""));
         Collections.shuffle(letters);
 
-        for(int i = 0; i < letters.size() && Answers.size() < 4; i++)
-            Answers.add(letters.get(i));
-        //shuff shuff
-        Collections.shuffle(Answers);
-        return Answers;
+        for(int i = 0; i < letters.size() && answers.size() < 4; i++)
+            answers.add(letters.get(i));
+        //shuff shuff because otherwise first is correct
+        Collections.shuffle(answers);
+        return answers;
+    }
+
+    private List<String> getAnswersRomaji(List<String> answers){
+        ArrayList<String> variants = new ArrayList<>(syllabls);
+        for(int i = 0; i<variants.size();i++){
+            if(variants.get(i).equals(getCorrectAnswer())){
+                variants.remove(i);
+                break;
+            }
+        }
+        Collections.shuffle(variants);
+
+        for(int i = 0; i < variants.size() && answers.size() < 4; i++)
+            answers.add(variants.get(i));
+
+        //shuff shuff because otherwise first is correct
+        Collections.shuffle(answers);
+        return answers;
     }
 
     @Override
@@ -137,7 +174,10 @@ public class KanaQuiz extends Quiz {
 
     @Override
     public Boolean checkTask(String userAnswer) {
-        return userAnswer.equals(correctAnswer);
+        if(isSyllableMode())
+            return userAnswer.equals(appropriateSyllable);
+        else
+            return userAnswer.equals(kanaCharacter);
     }
 
     @Override
@@ -145,7 +185,7 @@ public class KanaQuiz extends Quiz {
         Map<String,String> values = new HashMap<>();
         values.put("quizType",getClass().getCanonicalName());
         values.put("key",getKey());
-        values.put("correctAnswer",correctAnswer);
+        values.put("kanaCharacter", kanaCharacter);
         values.put("appropriateSyllable",appropriateSyllable);
         values.put("confusingCharacters",confusingCharacters);
         return values;
@@ -155,7 +195,7 @@ public class KanaQuiz extends Quiz {
     public void setValues(Map<String, String> values) {
         setAppropriateSyllable(values.get("appropriateSyllable"));
         setConfusingCharacters(values.get("confusingCharacters"));
-        setCorrectAnswer(values.get("correctAnswer"));
+        setKanaCharacter(values.get("kanaCharacter"));
         setQuizKey(values.get("key"));
     }
 }

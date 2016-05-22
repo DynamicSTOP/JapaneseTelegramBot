@@ -21,6 +21,16 @@ public abstract class Quiz extends Storable {
 
     public abstract List<String> getAnswers();
 
+    public Boolean isSyllableMode() {
+        return syllableMode;
+    }
+
+    public void setSyllableMode(Boolean syllableMode) {
+        this.syllableMode = syllableMode;
+    }
+
+    protected boolean syllableMode = false;
+
     /**
      * should be a uniq key for db
      * @return

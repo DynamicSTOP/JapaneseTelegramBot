@@ -1,6 +1,7 @@
 package com.japanese_bot.dialogs;
 
 import com.japanese_bot.Exceptions.EmptyStringException;
+import com.japanese_bot.quizes.Quiz;
 import com.japanese_bot.quizes.QuizManager;
 import com.japanese_bot.storages.IStorage;
 import com.pengrad.telegrambot.model.Update;
@@ -76,7 +77,9 @@ public class DialogManager {
 
     public Dialog createHiraganaQuizDialog(boolean syllableMode) {
         HiraganaQuizDialog dialog = new HiraganaQuizDialog(syllableMode);
-        dialog.setQuiz(QuizManager.getRandomHiraganaQuiz());
+        Quiz quiz = QuizManager.getRandomHiraganaQuiz();
+        quiz.setSyllableMode(syllableMode);
+        dialog.setQuiz(quiz);
         return dialog;
     }
 }
