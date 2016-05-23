@@ -27,6 +27,8 @@ You can check bot [here](https://telegram.me/JapaneseLanguageBot).
 
 *v0.7* Statistic e.g. "new record 5 guessed right in a row!"
 
+*v0.7.1* Statistic User Count, Quizzes count.
+
 *v0.8* Table of records
 
 *v0.8.1* Privacy settings for those who don't want to be in table of records
@@ -35,3 +37,7 @@ You can check bot [here](https://telegram.me/JapaneseLanguageBot).
 
 
 *v1.0* First version is done! Hurray!
+
+*v2.0* Dialogs
+
+*v3.0* Work in chats with multiple users.
